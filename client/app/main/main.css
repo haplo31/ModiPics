@@ -1,0 +1,171 @@
+.thing-form {
+    margin: 20px 0;
+}
+
+#banner {
+    border-bottom: none;
+    margin-top: -20px;
+}
+
+
+
+.hero-unit {
+    position: relative;
+    padding: 30px 15px;
+    color:#FFFFFF;
+    text-align: center;
+    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
+    background: #009688;
+}
+
+.footer {
+    text-align: center;
+    padding: 30px 0;
+    margin-top: 70px;
+    border-top: 1px solid #E5E5E5;
+}
+.mozblock{
+    margin-top:15px;
+}
+.navbar-text {
+    margin-left: 15px;
+}
+
+*{box-sizing: border-box;}
+.flowGrid:before,.flowGrid:after{
+    content: "";
+    display: table;
+}
+.flowGrid:after{
+    clear:both;
+}
+.flowGridItem{ margin-bottom:10px;}
+.flowGridItem img{width:100%;}
+.flowGridColumn{
+    float: left;
+    padding-left: 5px;
+}
+.flowGridColumn:last-of-type{
+    padding-right: 5px;
+}
+h1 {
+    font-family: 'Over the Rainbow';
+    font-size: 160px;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: 500;
+    line-height: 26.3999996185303px;
+}
+h2 { 
+    font-family: 'Open Sans', 
+    sans-serif; 
+    font-size: 40px; 
+    font-weight: 300; 
+    line-height: 32px; 
+    margin: 0 0 72px; 
+    text-align: center; 
+}
+h3 {
+    font-family: 'Over the Rainbow';
+    font-size: 25px;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: 500;
+    line-height: 15.3999996185303px;
+}
+.title{
+    margin: 100px;
+    margin-bottom: 70px;
+}
+.subtitle{
+    margin-bottom: 30px;
+}
+.choicebutton {
+  -webkit-transition:all linear 0.5s;
+  transition:all linear 0.5s;
+}
+.choicebutton.ng-hide {
+  opacity:0;
+}
+a:link{
+    color:white;
+}
+a:visited {
+    color:white;
+}
+.btn-circle {
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  padding: 6px 0;
+  font-size: 40px;
+  border-radius: 15px;
+  position: absolute;
+}
+.flowGridItem{
+    position: relative;
+    float: left;
+}
+div.flowGridItem {
+    position: relative;
+    float:left;
+    margin:5px;
+    overflow: hidden;
+}
+div.flowGridItem:hover img{
+    opacity:0.5;
+        -moz-transition: all 0.3s linear;
+    -webkit-transition: all 0.3s linear;
+    -o-transition: all 0.3s linear;
+    transition: all 0.3s linear;
+    border: 4px black solid;
+}
+div.flowGridItem:hover button {
+    visibility: visible;
+    opacity: 1;
+}
+div.flowGridItem button {
+    position:absolute;
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s, opacity 0.5s linear;
+}
+div.flowGridItem button.btn-plus {
+    bottom:4%;
+    left:30%;
+    line-height: 0px;
+    transition: opacity 0.5s linear;
+    background-color: #5C9730;
+
+}
+div.flowGridItem button.btn-moins {
+    bottom:4%;
+    left:50%;
+    line-height: 5px;
+    text-align: center;
+    transition: opacity 0.5s linear;
+    background-color:#CC2127;
+
+}
+div.modal-body{
+    text-align: center;
+}
+div.modalInfos{
+    margin-top: 15px;
+    font-family: 'Droid serif', serif;
+    font-size: 36px;
+    font-weight: 400;
+    font-style: italic; 
+    line-height: 44px; 
+    text-align: center;
+}
+img.modalImg{
+    max-width: 600px;
+    max-height: 400px;
+}
+.voteplus{
+    color:#5C9730;
+}
+.votemoins{
+    color:#CC2127;
+}

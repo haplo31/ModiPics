@@ -1,0 +1,49 @@
+<div ng-include="'components/navbar/navbar.html'"></div>
+
+<header class="hero-unit" id="banner">
+  <div class="container">
+    <h1 class="title">ModiPics</h1>
+    <h3 class="subtitle" >Unleash your imagination</h2>
+    <button class="btn-xl btn btn-primary choicebutton" ng-click="homeVisible=false;askFor()" ng-show="homeVisible">Start yours !</button>
+    <button class="btn-xl btn btn-primary choicebutton" ng-click="homeVisible=false;explore()" ng-show="homeVisible" ng-model-options="{debounce: 3000}">Take a look</button>
+    <button class="btn-xl btn btn-primary choicebutton" ng-show="catVisible" ng-click="lastPics()">Latest Creations </button>
+    <button class="btn-xl btn btn-primary choicebutton" ng-show="catVisible" ng-click="mostVotedPics()">Most Voted</button>
+    <button class="btn-xl btn btn-primary choicebutton" ng-show="catVisible" ng-click="monthChallengePics()">Month Challenge</button>
+
+  </div>
+</header>
+
+<div class="container">
+    <div class="mozblock">
+    <br\>
+      <ul class="flowGrid" ng-flow-grid="homePageGrid" min-item-width="200" >
+      <div ng-show="showLP" class="flowGridItem" ng-repeat="item in LPics">
+        <img  class="moz" ng-src="{{item.src}}" ng-click="modalPic(item)">
+            <button class="btn btn-success btn-circle btn-plus">+</button>
+            <button class="btn btn-danger btn-circle btn-moins">-</button>
+      </div>
+      </ul>
+      <ul class="flowGrid" ng-flow-grid="homePageGrid" min-item-width="200" >
+      <div ng-show="showMVP" class="flowGridItem" ng-repeat="item in MVPics">
+        <img  class="moz" ng-src="{{item.src}}" ng-click="modalPic(item)">
+            <button class="btn btn-success btn-circle btn-plus">+</button>
+            <button class="btn btn-danger btn-circle btn-moins">-</button>
+      </div>
+      </ul>
+      <ul class="flowGrid" ng-flow-grid="homePageGrid" min-item-width="200" >
+      <div ng-show="showMCP" class="flowGridItem" ng-repeat="item in MCPics">
+        <img  class="moz" ng-src="{{item.src}}" ng-click="modalPic(item)">
+            <button class="btn btn-success btn-circle btn-plus">+</button>
+            <button class="btn btn-danger btn-circle btn-moins">-</button>
+      </div>
+      </ul>
+  </div>
+
+</div>
+
+<footer class="footer">
+  <div class="container">
+      <p>ModiPics v0.1 |
+        <a href="https://github.com/haplo31/ModiPics">GitHub</a>
+  </div>
+</footer>
