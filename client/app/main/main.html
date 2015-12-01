@@ -14,30 +14,33 @@
 </header>
 
 <div class="container">
-    <div class="mozblock">
+<div deckgrid class="deckgrid" source="LPics">
+    <div class="a-card" >
+        <img src="" class="moz" data-ng-src="{{card.src}}" ng-click="mother.modalPic(card)">
+        <button class="btn btn-circle btn-vote btn-primary">❤</button>
+    </div>
+</div>
+<!--     <div class="mozblock">
     <br\>
       <ul class="flowGrid" ng-flow-grid="homePageGrid" min-item-width="200" >
       <div ng-show="showLP" class="flowGridItem" ng-repeat="item in LPics">
         <img  class="moz" ng-src="{{item.src}}" ng-click="modalPic(item)">
-            <button class="btn btn-success btn-circle btn-plus">+</button>
-            <button class="btn btn-danger btn-circle btn-moins">-</button>
+            <button class="btn btn-circle btn-vote btn-primary">❤</button>
       </div>
       </ul>
       <ul class="flowGrid" ng-flow-grid="homePageGrid" min-item-width="200" >
       <div ng-show="showMVP" class="flowGridItem" ng-repeat="item in MVPics">
         <img  class="moz" ng-src="{{item.src}}" ng-click="modalPic(item)">
-            <button class="btn btn-success btn-circle btn-plus">+</button>
-            <button class="btn btn-danger btn-circle btn-moins">-</button>
+            <button class="btn btn-circle btn-vote btn-primary">❤</button>
       </div>
       </ul>
       <ul class="flowGrid" ng-flow-grid="homePageGrid" min-item-width="200" >
       <div ng-show="showMCP" class="flowGridItem" ng-repeat="item in MCPics">
         <img  class="moz" ng-src="{{item.src}}" ng-click="modalPic(item)">
-            <button class="btn btn-success btn-circle btn-plus">+</button>
-            <button class="btn btn-danger btn-circle btn-moins">-</button>
+            <button class="btn btn-success btn-circle btn-vote btn-primary">❤</button>
       </div>
       </ul>
-  </div>
+  </div> -->
 
 </div>
 

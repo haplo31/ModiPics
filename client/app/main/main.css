@@ -24,30 +24,17 @@
     margin-top: 70px;
     border-top: 1px solid #E5E5E5;
 }
-.mozblock{
-    margin-top:15px;
+.a-card{
+    text-align: center;
+}
+.moz{
+    width: 285px;
+    border:2px white solid;
 }
 .navbar-text {
     margin-left: 15px;
 }
 
-*{box-sizing: border-box;}
-.flowGrid:before,.flowGrid:after{
-    content: "";
-    display: table;
-}
-.flowGrid:after{
-    clear:both;
-}
-.flowGridItem{ margin-bottom:10px;}
-.flowGridItem img{width:100%;}
-.flowGridColumn{
-    float: left;
-    padding-left: 5px;
-}
-.flowGridColumn:last-of-type{
-    padding-right: 5px;
-}
 h1 {
     font-family: 'Over the Rainbow';
     font-size: 160px;
@@ -94,25 +81,23 @@ a:visited {
     color:white;
 }
 .btn-circle {
-  width: 30px;
-  height: 30px;
+  width: 40px;
+  height: 40px;
   text-align: center;
-  padding: 6px 0;
-  font-size: 40px;
-  border-radius: 15px;
+  padding: 7.5px 0px 0px 0.5px;
+  font-size: 45px;
+  border-radius: 20px;
   position: absolute;
 }
+
 .flowGridItem{
     position: relative;
     float: left;
 }
-div.flowGridItem {
+div.a-card {
     position: relative;
-    float:left;
-    margin:5px;
-    overflow: hidden;
 }
-div.flowGridItem:hover img{
+div.a-card:hover img{
     opacity:0.5;
         -moz-transition: all 0.3s linear;
     -webkit-transition: all 0.3s linear;
@@ -120,38 +105,50 @@ div.flowGridItem:hover img{
     transition: all 0.3s linear;
     border: 4px black solid;
 }
-div.flowGridItem:hover button {
+div.a-card:hover button {
     visibility: visible;
     opacity: 1;
 }
-div.flowGridItem button {
+div.a-card button {
     position:absolute;
     visibility: hidden;
     opacity: 0;
     transition: visibility 0s, opacity 0.5s linear;
 }
-div.flowGridItem button.btn-plus {
+div.a-card button.btn-vote {
     bottom:4%;
-    left:30%;
-    line-height: 0px;
+    left:40%;
+    line-height: 20px;
     transition: opacity 0.5s linear;
-    background-color: #5C9730;
-
 }
-div.flowGridItem button.btn-moins {
-    bottom:4%;
-    left:50%;
-    line-height: 5px;
-    text-align: center;
-    transition: opacity 0.5s linear;
-    background-color:#CC2127;
-
+div.a-card button.btn-vote:hover {
+    background-color: red;
+    border-color: red;
+    transition: all 0.5s linear;
+}
+.btn-votexl {
+  width: 100px;
+  height: 100px;
+  text-align: center;
+  padding: 10px 50px 0px 0px;
+  line-height: 0px;
+  font-size: 100px;
+  border-radius: 50px;
+  position: relative;
+}
+.btn-votexl:hover {
+  background-color: red;
+    border-color: red;
+    transition: all 0.5s linear;
 }
 div.modal-body{
     text-align: center;
 }
+div.modal-footer{
+    text-align: center;
+}
 div.modalInfos{
-    margin-top: 15px;
+    margin-top: 50px;
     font-family: 'Droid serif', serif;
     font-size: 36px;
     font-weight: 400;
@@ -159,13 +156,55 @@ div.modalInfos{
     line-height: 44px; 
     text-align: center;
 }
+div.modal-complete{
+    border: 5px #00796B solid;
+    background-color: #E5E5E5;
+}
 img.modalImg{
     max-width: 600px;
     max-height: 400px;
+    border: 5px white solid;
 }
-.voteplus{
-    color:#5C9730;
+.vote{
+    color:#E040FB;
+    margin-top: 50px;
+    font-size: 85px;
+    border-radius: 20px;
+
 }
-.votemoins{
-    color:#CC2127;
+.legendAuthor{
+        display: inline;
+        margin-right: 50px;
+}
+.legendArtist{
+        display: inline;
+}
+.nbVote{
+    display: block;
+    text-align: center;
+    line-height: 95px;
+    color:white;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 50px;
+    margin-bottom: -50px;
+    width: 200px;
+    height: 150px;
+    font-size: 85px;
+    background-color:#00796B; 
+    border-radius: 105px; 
+}
+.deckgrid[deckgrid]::before {
+    /* Specifies that the grid should have a maximum of 4 columns. Each column will have the classes 'column' and 'column-1-4' */
+    content: '4 .column.column-1-4';
+    font-size: 0; /* See https://github.com/akoenig/angular-deckgrid/issues/14#issuecomment-35728861 */
+    visibility: hidden;
+}
+
+.deckgrid .column {
+    float: left;
+}
+
+.deckgrid .column-1-4 {
+    width: 25%;
 }

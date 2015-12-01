@@ -14,10 +14,10 @@
     "font-awesome": ">=4.1.0",
     "lodash": "~2.4.1",
     "angular-socket-io": "~0.6.0",
-    "ngFlowGrid": "~1.0.2",
     "ngInfiniteScroll": "1.0.0",
     "angular-morph": "~0.1.0",
-    "angular-animate": "~1.4.8"
+    "angular-animate": "~1.4.8",
+    "angular-deckgrid": "~0.5.0"
   },
   "devDependencies": {
     "angular-mocks": ">=1.2.*",

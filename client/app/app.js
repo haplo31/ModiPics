@@ -7,8 +7,8 @@ angular.module('modiPicsApp', [
   'ngRoute',
   'btford.socket-io',
   'ui.bootstrap',
-  'ngFlowGrid',
-  'ngAnimate'
+  'ngAnimate',
+  'akoenig.deckgrid'
 ])
   .config(function ($routeProvider, $locationProvider, $httpProvider) {
     $routeProvider
