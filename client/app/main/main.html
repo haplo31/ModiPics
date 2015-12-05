@@ -6,44 +6,38 @@
     <h3 class="subtitle" >Unleash your imagination</h2>
     <button class="btn-xl btn btn-primary choicebutton" ng-click="homeVisible=false;askFor()" ng-show="homeVisible">Start yours !</button>
     <button class="btn-xl btn btn-primary choicebutton" ng-click="homeVisible=false;explore()" ng-show="homeVisible" ng-model-options="{debounce: 3000}">Take a look</button>
+    <button class="btn-xl btn btn-primary choicebutton" ng-show="catVisible" ng-click="hallOfFamePics()">Artists Hall of Fame</button>
     <button class="btn-xl btn btn-primary choicebutton" ng-show="catVisible" ng-click="lastPics()">Latest Creations </button>
     <button class="btn-xl btn btn-primary choicebutton" ng-show="catVisible" ng-click="mostVotedPics()">Most Voted</button>
-    <button class="btn-xl btn btn-primary choicebutton" ng-show="catVisible" ng-click="monthChallengePics()">Month Challenge</button>
 
   </div>
 </header>
 
-<div class="container">
-<div deckgrid class="deckgrid" source="LPics">
-    <div class="a-card" >
-        <img src="" class="moz" data-ng-src="{{card.src}}" ng-click="mother.modalPic(card)">
-        <button class="btn btn-circle btn-vote btn-primary">❤</button>
+<div class="container" ng-show="mozaic">
+  <div deckgrid class="deckgrid" source="Pics">
+      <div class="a-card" >
+          <img src="" class="moz" data-ng-src="{{card.src}}" ng-click="mother.modalPic(card)">
+          <button class="btn btn-circle btn-vote btn-primary nbVote" >{{card.vote}}</button>
+          <button class="btn btn-circle btn-vote btn-primary" ng-click="mother.vote(card)">❤</button>
+      </div>
+  </div>
+</div>
+<div class="container" ng-show="dashboard">
+  <div class="actiongrid">
+    <div class="dashboard" ng-init="imgsrc='/assets/images/plage.png'" ng-mouseover="imgsrc='/assets/images/animated.gif'" ng-mouseout="imgsrc='/assets/images/plage.png'">
+      <img class="buttonimages" ng-src="{{imgsrc}}">
+      <span class="buttontitles">Add or Remove  <br /> a Person</span>
     </div>
+    <div class="dashboard" ng-init="imgsrc2='/assets/images/landscapebrut.png'" ng-mouseover="imgsrc2='/assets/images/landscape.gif'" ng-mouseout="imgsrc2='/assets/images/landscapebrut.png'">
+      <img class="buttonimages" ng-src="{{imgsrc2}}">
+      <span class="buttontitles">Improvements</span>
+    </div>
+    <div class="dashboard" ng-init="imgsrc3='/assets/images/creation.png'" ng-mouseover="imgsrc3='/assets/images/creation.gif'" ng-mouseout="imgsrc3='/assets/images/creation.png'">
+      <img class="buttonimages" ng-src="{{imgsrc3}}">
+      <span class="buttontitles">Creation</span>
+    </div>
+  </div>
 </div>
-<!--     <div class="mozblock">
-    <br\>
-      <ul class="flowGrid" ng-flow-grid="homePageGrid" min-item-width="200" >
-      <div ng-show="showLP" class="flowGridItem" ng-repeat="item in LPics">
-        <img  class="moz" ng-src="{{item.src}}" ng-click="modalPic(item)">
-            <button class="btn btn-circle btn-vote btn-primary">❤</button>
-      </div>
-      </ul>
-      <ul class="flowGrid" ng-flow-grid="homePageGrid" min-item-width="200" >
-      <div ng-show="showMVP" class="flowGridItem" ng-repeat="item in MVPics">
-        <img  class="moz" ng-src="{{item.src}}" ng-click="modalPic(item)">
-            <button class="btn btn-circle btn-vote btn-primary">❤</button>
-      </div>
-      </ul>
-      <ul class="flowGrid" ng-flow-grid="homePageGrid" min-item-width="200" >
-      <div ng-show="showMCP" class="flowGridItem" ng-repeat="item in MCPics">
-        <img  class="moz" ng-src="{{item.src}}" ng-click="modalPic(item)">
-            <button class="btn btn-success btn-circle btn-vote btn-primary">❤</button>
-      </div>
-      </ul>
-  </div> -->
-
-</div>
-
 <footer class="footer">
   <div class="container">
       <p>ModiPics v0.1 |

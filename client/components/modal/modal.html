@@ -6,16 +6,16 @@
 	<div class="modal-body">
 		<img class="modalImg" src="{{modalItem.src}}"/>
 		<div class="legend">
-		<span class="legendAuthor"><b>Author:</b><a> {{modalItem.owner}} </a></span>
-		<span class="legendArtist"><b>Graphic Artist:</b><a>{{modalItem.artist}} </a></span>
+		<p class="modal-text"><b>Author: </b><a>{{modalItem.owner}} </a></p>
+		<p class="modal-text"><b>Artist: </b><a>{{modalItem.artist}} </a></p>
+		<p class="modal-text work"><b>Work: </b><a>{{modalItem.modtype}} </a></p>
 		</div>
 		
 		<div class="modalInfos">
-		<div class="nbVote">{{modalItem.vote}}</div>
-		<button class="btn btn-circle btn-vote btn-primary btn-votexl" ng-click="vote(modalItem.id)">❤</button>
+		<div class="nbVotexl">{{modalItem.vote}}</div>
+		<button class="btn btn-circle btn-vote btn-primary btn-votexl" ng-click="addVote(modalItem)">❤</button>
 		</div>
 	</div>
 	<div class="modal-footer">
-	  <button class="btn btn-primary btn-xl" type="button" ng-click="close()">Close</button>
 	</div>
 </div>
