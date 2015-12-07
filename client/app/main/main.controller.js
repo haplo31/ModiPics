@@ -71,7 +71,7 @@ angular.module('modiPicsApp')
     $scope.modalPic = function(item) {
       console.log(item.src)
       var modalInstance = $modal.open({
-        animation: $scope.animationsEnabled,
+        animation: true,
         templateUrl: '../../components/modal/modal.html',
         controller: 'ModalInstanceCtrl',
         size: "lg",
@@ -89,48 +89,51 @@ angular.module('modiPicsApp')
       }, function () {
       });
     };
-    $scope.toggleAnimation = function () {
-      $scope.animationsEnabled = !$scope.animationsEnabled;
+    $scope.creaRem = function(item) {
+      var creaInstance = $modal.open({
+        animation: true,
+        templateUrl: '../../components/creablock/creablock.html',
+        controller: 'CreaInstanceCtrl',
+        size: "lg",
+        resolve: {
+          item: function () {
+            return item;
+          }          
+          // item: function () {
+          //   return item;
+          // },
+          // vote: function () {
+          // return $scope.vote;
+          // }
+        }
+      });
+      creaInstance.result.then(function (selectedItem) {
+        $scope.selected = selectedItem;
+      }, function () {
+      });
     };
-
     $scope.vote=function(pic){
       console.log(pic)
       pic.vote+=1;
       console.log(pic)
       $http.put('/api/pictures/'+pic._id, pic);
     }
-    //$scope.awesomeThings = [];
 
-    // $http.get('/api/things').success(function(awesomeThings) {
-    //   $scope.awesomeThings = awesomeThings;
-    //   socket.syncUpdates('thing', $scope.awesomeThings);
-    // });
     $http.get('/api/pictures/last').success(function(pictures) {
       $scope.Pics=pictures
     });
-    // $http.get('/api/pictures').success(function(pictures) {
-    //   console.log(pictures)
-    // });
-    // angular.forEach($scope.Pics, function(pic, key){
-    //   pic.date=new Date().toUTCString();
-    //   $http.post('/api/pictures', pic);
-    // });
-    
-    /* $scope.addThing = function() {
-      if($scope.newThing === '') {
-        return;
-      }
-      $http.post('/api/things', { name: $scope.newThing });
-      $scope.newThing = '';
-    };
+        $(".topImage").css('width', '50%');
+  $(".beforeAfterSlidebar").mousemove(
+    function(e) {
+      // get the mouse x (horizontal) position and offset of the div
+      var offset =  $(this).offset();
+      var iTopWidth = (e.pageX - offset.left);
 
-    $scope.deleteThing = function(thing) {
-      $http.delete('/api/things/' + thing._id);
-    };
-
-    $scope.$on('$destroy', function () {
-      socket.unsyncUpdates('thing');
-    });*/
+      // set width of bottomimage div
+      $(this).find(".topImage").width(iTopWidth);
+    }
+  );
+  console.log($('.slider'))
   })
 .controller('ModalInstanceCtrl', function ($scope, $modalInstance, item, vote) {
 
@@ -147,4 +150,20 @@ angular.module('modiPicsApp')
   $scope.addVote = function () {
     $scope.result = vote(item);
   };
-});
+})
+.controller('CreaInstanceCtrl', function ($scope, $modalInstance,$timeout, item) {
+   $timeout(function(){$('.slider').slider(); }, 0);
+   // OU LE FOUTRE ???
+   console.log($('.slider').slider())
+    
+  $scope.modalItem=item;
+  $scope.ok = function () {
+    $modalInstance.close($scope.selected.item);
+  };
+  $scope.close = function () {
+    $modalInstance.close();
+  };
+  $scope.cancel = function () {
+    $modalInstance.dismiss('cancel');
+  };
+})

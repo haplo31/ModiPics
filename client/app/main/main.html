@@ -24,9 +24,10 @@
 </div>
 <div class="container" ng-show="dashboard">
   <div class="actiongrid">
-    <div class="dashboard" ng-init="imgsrc='/assets/images/plage.png'" ng-mouseover="imgsrc='/assets/images/animated.gif'" ng-mouseout="imgsrc='/assets/images/plage.png'">
+  <revealer top-image="/assets/images/plage.png" top-label="Top Image" bottom-image="/assets/images/plage.png" bottom-label="Bottom Label"></revealer>
+    <div class="dashboard" ng-init="imgsrc='/assets/images/plage.png'" ng-mouseover="imgsrc='/assets/images/animated.gif'" ng-mouseout="imgsrc='/assets/images/plage.png'" ng-click="creaRem('idclient')">
       <img class="buttonimages" ng-src="{{imgsrc}}">
-      <span class="buttontitles">Add or Remove  <br /> a Person</span>
+      <span class="buttontitles">Remove  <br /> a Person</span>
     </div>
     <div class="dashboard" ng-init="imgsrc2='/assets/images/landscapebrut.png'" ng-mouseover="imgsrc2='/assets/images/landscape.gif'" ng-mouseout="imgsrc2='/assets/images/landscapebrut.png'">
       <img class="buttonimages" ng-src="{{imgsrc2}}">
