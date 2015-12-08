@@ -1,14 +1,38 @@
 <div class="modal-complete">
 	<div class="modal-header">
+			<div class="titleretouch">
+			<h2 class="titleretouch">Remove a person</h2>
+		</div>
 	  <button ng-if="modal.dismissable" type="button" ng-click="$dismiss()" class="close">&times;</button>
 	  <h4 ng-if="modal.title" ng-bind="modal.title" class="modal-title"></h4>
 	</div>
 	<div class="modal-body">
-		<div class="slider">
-		  <div class="left image"> <img src="/assets/images/rem1.png" w="200" h="200"/> </div>
-		  <div class="right image"> <img src="/assets/images/rem2.png"/> </div>
+		<div class="comparepic" ng-show="step==0">
+			<div class="slider">
+			  <div class="left image"> <img src="/assets/images/rem1.png" w="200" h="200"/> </div>
+			  <div class="right image"> <img src="/assets/images/rem2.png"/> </div>
+			</div>
+			<span class="captionretouch">Select the separator on the left on the picture and drag it to see an example of realisation</span>
+			<div class="explanation">
+				<h3 class="hiw">How it Works</h3>
+				<span class="explanation-1">1<br />In the next steps, you will choose what element(s) you want to remove on your picture, the expected quality you want and every additional information you want to provide.</span>
+				<span class="explanation-2">2<br />A price will be automatically calculated and, if you finalize the request, a graphic artist matching your criteria will be suggested.</span>
+				<span class="explanation-3">3<br />You can refuse the suggested artist as many times as you want, in this case, an other artist will be suggested.</span>
+				<span class="explanation-4">4<br />Once you have accepted an artist, you photo will be send to him and you will receive the result of your request in the time indicated by the graphist.</span>
+				<span class="explanationrelax">In any case, nothing is send until you finalize your request on the last step by clicking on the very distinctive button "Finalize" :)</span>
+			</div>
 		</div>
+
+		<div class="updloadpic" ng-show="step==1">
+				<span class="explanation-1" ng-hide="uploadedImgSrc">First, choose the picture you want to use</span>
+				<button class="btn btn-primary btn-large" type="file" ngf-select="uploadFiles($file, $invalidFiles)" ngf-max-size="20MB" accept="image/*" ng-hide="uploadedImgSrc">Upload</button>
+				<img class="picturezone" ng-src="{{uploadedImgSrc || '/assets/images/white.png'}}" data-drop="true" jqyoui-droppable="{multiple:true, onDrop:'buttonDrop', onOut:'buttonOut'}">
+				<img data-drag="true" jqyoui-draggable="{animate: true,deepCopy: true}" class="dragbtn noselect" ng-src="/assets/images/red_round_button.png">
+		</div>
+
+
 	</div>
 	<div class="modal-footer">
+		<button class="btn btn-large btn-primary nextbutton" ng-click="next()">&#10140;</button>
 	</div>
 </div>

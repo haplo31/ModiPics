@@ -64,8 +64,8 @@
 	};
 
 	$.fn.slider.defaultOptions= {
-			initialPosition: 0.5,
-			showInstruction: true,
+			initialPosition: 0.2,
+			showInstruction: false,
 			instructionText: 'Click and Drag'
 	};	
 

@@ -8,7 +8,9 @@ angular.module('modiPicsApp', [
   'btford.socket-io',
   'ui.bootstrap',
   'ngAnimate',
-  'akoenig.deckgrid'
+  'akoenig.deckgrid',
+  'ngFileUpload',
+  'ngDragDrop'
 ])
   .config(function ($routeProvider, $locationProvider, $httpProvider) {
     $routeProvider

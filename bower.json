@@ -17,7 +17,9 @@
     "ngInfiniteScroll": "1.0.0",
     "angular-morph": "~0.1.0",
     "angular-animate": "~1.4.8",
-    "angular-deckgrid": "~0.5.0"
+    "angular-deckgrid": "~0.5.0",
+    "ng-file-upload": "~10.1.8",
+    "angular-dragdrop": "~1.0.12"
   },
   "devDependencies": {
     "angular-mocks": ">=1.2.*",

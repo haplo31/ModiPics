@@ -98,7 +98,7 @@ angular.module('modiPicsApp')
         resolve: {
           item: function () {
             return item;
-          }          
+          }
           // item: function () {
           //   return item;
           // },
@@ -133,7 +133,6 @@ angular.module('modiPicsApp')
       $(this).find(".topImage").width(iTopWidth);
     }
   );
-  console.log($('.slider'))
   })
 .controller('ModalInstanceCtrl', function ($scope, $modalInstance, item, vote) {
 
@@ -151,12 +150,14 @@ angular.module('modiPicsApp')
     $scope.result = vote(item);
   };
 })
-.controller('CreaInstanceCtrl', function ($scope, $modalInstance,$timeout, item) {
-   $timeout(function(){$('.slider').slider(); }, 0);
-   // OU LE FOUTRE ???
-   console.log($('.slider').slider())
-    
+.controller('CreaInstanceCtrl', function ($scope, $modalInstance,$timeout, item, Upload,$http) {
+  $timeout(function(){$('.slider').slider(); }, 0);   
   $scope.modalItem=item;
+  $scope.step=0;
+  $scope.next = function () {
+    console.log("next")
+    $scope.step+=1;
+  };
   $scope.ok = function () {
     $modalInstance.close($scope.selected.item);
   };
@@ -166,4 +167,48 @@ angular.module('modiPicsApp')
   $scope.cancel = function () {
     $modalInstance.dismiss('cancel');
   };
+
+  $scope.uploadedImg=false
+  //Gerer la suppression
+  $scope.uploadFiles = function(file, errFiles) {
+    $scope.f = file;
+    $scope.errFile = errFiles && errFiles[0];
+    if (file) {
+      Upload.upload({
+          url: 'upload',
+          data: {file: file}
+      }).then(function (resp) {
+        console.log(file)
+          console.log('Success ' + resp.config.data.file.name + 'uploaded. Response: ' + resp.data);
+          $http.post('/api/pictures/',{owner:"John",artist:"Protoshop",modtype:"",vote:0,name:resp.config.data.file.name,src:"http://localhost:9000/public/"+resp.config.data.file.name});
+          $scope.uploadedImgSrc="http://localhost:9000/public/"+resp.config.data.file.name;
+          $scope.uploadedImg=true;
+      }, function (resp) {
+          console.log('Error status: ' + resp.status);
+      }, function (evt) {
+          var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
+          console.log('progress: ' + progressPercentage + '% ' + evt.config.data.file.name);
+      });
+    }   
+  }
+  var imgWidth,imgHeight;
+  var posbuttonX,posbuttonY;
+  $scope.buttonDrop = function(event,ui){
+    imgWidth=angular.element(document.querySelector('.picturezone')).prop('width');
+    imgHeight=angular.element(document.querySelector('.picturezone')).prop('height');
+    posbuttonX=angular.element(document.querySelector('.dragbtn')).prop('offsetTop')-angular.element(document.querySelector('.picturezone')).prop('offsetTop')+angular.element(document.querySelector('.dragbtn')).prop('height')/2
+    posbuttonY=angular.element(document.querySelector('.dragbtn')).prop('offsetLeft')-angular.element(document.querySelector('.picturezone')).prop('offsetLeft')+angular.element(document.querySelector('.dragbtn')).prop('width')/2
+    console.log (imgWidth)
+    console.log (imgHeight)
+    console.log (posbuttonX)
+    console.log (posbuttonY)
+  }
+  $scope.buttonOut = function(event,ui){
+    console.log("out")
+  }
 })
+.controller('dragCtrl', function($scope, $q) {
+  $scope.list1 = {title: 'Drag and Drop with default confirmation'};
+  $scope.list2 = [];
+
+});

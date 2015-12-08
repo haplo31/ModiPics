@@ -10,7 +10,6 @@ describe('GET /api/pictures', function() {
     request(app)
       .get('/api/pictures')
       .expect(200)
-      .expect('Content-Type', /json/)
       .end(function(err, res) {
         if (err) return done(err);
         res.body.should.be.instanceof(Array);

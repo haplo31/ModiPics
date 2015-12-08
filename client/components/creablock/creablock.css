@@ -21,13 +21,101 @@
 .modal-danger .modal-header {
   background: #d9534f;
 }
-.slider{
-	width: 500px;
+.modal-header{
+	margin-bottom: 0px;
+	padding-bottom: 0px;
 }
 .modal-body{
-	text-align: center;
-	padding-left: 22.5%;
+	margin-top: 0px;
 }
 .slider{
-	border: 4px black solid;
+	width: 500px;
+	border: 4px #00796B solid;
+
+}
+.comparepic{
+	margin-top: 0px;
+	padding-left: 21%;
+}
+.titleretouch{
+	font-family: 'Bitter',serif;
+    font-size: 45px;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: bold;
+    color: white;
+    margin-bottom: 5px;
+    padding-bottom: 5px;
+    line-height: 35px;
+    text-shadow: 2px 0 0 #000, 0 -1px 0 #000, 0 1px 0 #000, -1px 0 0 #000;
+}
+.captionretouch{
+	margin:0 0 0 3px;
+	padding:0;
+	padding-right: 175px;
+	color:white;
+	font-size:12px;
+	font-style:italic;
+	text-shadow: 1px 0 0 #000, 0 -1px 0 #000, 0 1px 0 #000, -1px 0 0 #000;
+}
+.hiw{
+	font-size: 50px;
+	font-weight: bold;
+	color:#00796B;
+	margin-bottom: 30px;
+}
+.explanation{
+	margin-top: 20px;
+	display:inline-block;
+	text-align: center;
+	margin-left: -130px;
+	padding-right: 60px;
+	font-family: 'Original Surfer', cursive;
+	font-size: 14px;
+	font-weight: bold;
+	line-height: 20px;
+	color:#00796B;
+}
+span[class^="explanation-"], div[class*=" explanation-"]{
+	display:inline-block;
+	margin-bottom: 30px;
+}
+span[class^="explanation-"]::first-letter, div[class*=" explanation-"]::first-letter{
+	line-height: 15px;
+	font-size:30px;
+	color:#E040FB;
+}
+.explanationrelax{
+	display:inline-block;
+	margin-bottom: 30px;
+	color:#E040FB;
+	font-size: 16px;
+}
+.symbolstodrag{
+	display:inline-block;
+}
+.nextbutton{
+	position: absolute;
+	right:0;
+	bottom: 0;
+	background-color:#00796B;
+	font-size: 50px;
+	padding-right: 50px;
+	padding-left: 50px;
+	padding-top: 0px;
+	border-top-left-radius: 50px;
+	border-color: #00796B;
+}
+.picturezone{
+	text-align: center;
+	border: 4px #00796B solid;
+	margin-bottom: 100px;
+}
+.noselect {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }

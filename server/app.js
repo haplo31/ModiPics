@@ -32,6 +32,29 @@ require('./config/socketio')(socketio);
 require('./config/express')(app);
 require('./routes')(app);
 
+
+var busboy = require('connect-busboy');
+var path = require('path');
+var fs = require('fs-extra');
+app.use(busboy());
+app.use(express.static(path.join(__dirname, 'app')));
+app.use(express.static(path.join(__dirname, '.tmp'))); //TODO
+app.use("/public", express.static(__dirname + "/uploads"));
+app.route('/upload')
+  .post(function (req, res) {
+    req.pipe(req.busboy);
+    req.busboy.on('file', function (fieldname, file, filename) {
+      var stream = fs.createWriteStream(__dirname + '/uploads/' + filename);
+      file.pipe(stream);
+      stream.on('close', function () {
+        console.log('File ' + filename + ' is uploaded');
+        res.json({
+          filename: filename
+        });
+      });
+    });
+  });
+
 // Start server
 server.listen(config.port, config.ip, function () {
   console.log('Express server listening on %d, in %s mode', config.port, app.get('env'));
