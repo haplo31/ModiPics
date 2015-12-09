@@ -10,7 +10,7 @@ angular.module('modiPicsApp', [
   'ngAnimate',
   'akoenig.deckgrid',
   'ngFileUpload',
-  'ngDragDrop'
+  'ui.drop'
 ])
   .config(function ($routeProvider, $locationProvider, $httpProvider) {
     $routeProvider

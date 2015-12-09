@@ -92,7 +92,10 @@ span[class^="explanation-"]::first-letter, div[class*=" explanation-"]::first-le
 	font-size: 16px;
 }
 .symbolstodrag{
+	position: relative;
 	display:inline-block;
+	width: 300px;
+	margin-bottom: 80px;
 }
 .nextbutton{
 	position: absolute;
@@ -109,7 +112,7 @@ span[class^="explanation-"]::first-letter, div[class*=" explanation-"]::first-le
 .picturezone{
 	text-align: center;
 	border: 4px #00796B solid;
-	margin-bottom: 100px;
+	margin-bottom: 30px;
 }
 .noselect {
     -webkit-touch-callout: none;

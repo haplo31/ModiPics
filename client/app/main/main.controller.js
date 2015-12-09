@@ -193,6 +193,12 @@ angular.module('modiPicsApp')
   }
   var imgWidth,imgHeight;
   var posbuttonX,posbuttonY;
+  $scope.drag = function() {
+    console.log("Drag");
+  }
+  $scope.drop = function() {
+    console.log("Drop");
+  }
   $scope.buttonDrop = function(event,ui){
     imgWidth=angular.element(document.querySelector('.picturezone')).prop('width');
     imgHeight=angular.element(document.querySelector('.picturezone')).prop('height');
