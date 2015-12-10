@@ -27,15 +27,19 @@
 }
 .modal-body{
 	margin-top: 0px;
+	padding-top: 0px;
+}
+.modal-footer{
+	margin-top: 0px;
+	padding-top: 0px;
 }
 .slider{
-	width: 500px;
+	width: 400px;
 	border: 4px #00796B solid;
-
 }
 .comparepic{
 	margin-top: 0px;
-	padding-left: 21%;
+	padding-left: 26.5%;
 }
 .titleretouch{
 	font-family: 'Bitter',serif;
@@ -50,11 +54,11 @@
     text-shadow: 2px 0 0 #000, 0 -1px 0 #000, 0 1px 0 #000, -1px 0 0 #000;
 }
 .captionretouch{
-	margin:0 0 0 3px;
+	margin:0 0 0 -125px;
 	padding:0;
-	padding-right: 175px;
+	padding-right: 100px;
 	color:white;
-	font-size:12px;
+	font-size:10px;
 	font-style:italic;
 	text-shadow: 1px 0 0 #000, 0 -1px 0 #000, 0 1px 0 #000, -1px 0 0 #000;
 }
@@ -68,7 +72,7 @@
 	margin-top: 20px;
 	display:inline-block;
 	text-align: center;
-	margin-left: -130px;
+	margin-left: -170px;
 	padding-right: 60px;
 	font-family: 'Original Surfer', cursive;
 	font-size: 14px;
@@ -78,7 +82,7 @@
 }
 span[class^="explanation-"], div[class*=" explanation-"]{
 	display:inline-block;
-	margin-bottom: 30px;
+	margin-bottom: 10px;
 }
 span[class^="explanation-"]::first-letter, div[class*=" explanation-"]::first-letter{
 	line-height: 15px;
@@ -94,8 +98,9 @@ span[class^="explanation-"]::first-letter, div[class*=" explanation-"]::first-le
 .symbolstodrag{
 	position: relative;
 	display:inline-block;
-	width: 300px;
-	margin-bottom: 80px;
+	width: 48px;
+	max-height: 48px;
+	margin-bottom: 20px;
 }
 .nextbutton{
 	position: absolute;
@@ -109,10 +114,82 @@ span[class^="explanation-"]::first-letter, div[class*=" explanation-"]::first-le
 	border-top-left-radius: 50px;
 	border-color: #00796B;
 }
+.draggablearea{
+	position: relative;
+	display: block;
+	text-align: center;
+}
 .picturezone{
 	text-align: center;
 	border: 4px #00796B solid;
-	margin-bottom: 30px;
+	margin-bottom: 10px;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	max-width: 800px;
+	min-width: 400px;
+	max-height: 500px;
+	min-height: 200px;
+}
+.dotpos{
+	color:#00796B;
+	font-size: 35px;
+	text-shadow: 2px 0 0 #000, 0 -1px 0 #000, 0 1px 0 #000, -2px 0 0 #000;
+	cursor: pointer;
+}
+.lgddot{
+	display: block;
+	font-family: 'Original Surfer', cursive;
+	font-size: 14px;
+	font-weight: bold;
+	line-height: 20px;
+	color:#00796B;
+	margin-top: 20px;
+	margin-bottom: 10px;
+	font-weight: bold;
+
+}
+.addinfos{
+	display: block;
+	font-family: 'Original Surfer', cursive;
+	font-size: 14px;
+	font-weight: bold;
+	line-height: 20px;
+	color:#00796B;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	font-weight: bold;	
+}
+.addinfostyped {
+	height: 100px;
+	width: 70%;
+	border: 2px #00796B solid;
+	border-radius: 5px;
+	box-shadow: inset 1px 1px 3px 0 #00796B;
+  	transition: box-shadow 0.3s;
+}
+.lgddot::first-letter,.addinfos::first-letter{
+	line-height: 15px;
+	font-size:30px;
+	color:#E040FB;
+}
+.expland{
+	display: block;
+	font-family: 'Original Surfer', cursive;
+	line-height: 15px;
+	font-size:30px;
+	color:#E040FB;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	font-weight: bold;		
+}
+.active{
+	color:#E040FB;
+}
+.dragbtn{
+	display: inline;
+	top:-48px;
+	position: absolute;
 }
 .noselect {
     -webkit-touch-callout: none;

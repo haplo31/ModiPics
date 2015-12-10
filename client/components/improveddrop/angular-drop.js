@@ -644,14 +644,16 @@ var $dragProvider = function() {
     if (value.length === '') {
       return;
     }
+
     if (/^(\.|#)/.test(value) && $.fn && angular.isFunction($.fn.closest)) {
       // Find nearest element matching class
       return constraintsFor(element.parent().closest(value));
     }
     if (/^(\^|parent)$/.test(value)) {
-      return constraintsFor(element.parent());
+      return constraintsFor(element.parent());    
     }
     return constraintsFor(DOM.closest(element.parent(), value));
+
   }
 
   function constraintsFor(element) {
@@ -1119,18 +1121,30 @@ function publishExternalAPI() {
   })
   .directive("ondrag", function(){
       return function(scope, element, attrs) {
-      element.bind("mousedown", function(){
+        element.bind("mousedown", function(){
         scope.$apply(attrs.ondrag);
       })
     }
   })
   .directive("ondrop", function(){
-      return function(scope, element, attrs) {
-      element.bind("mouseup", function(){
-        scope.$apply(attrs.ondrop);
-      })
-    }
-  });
+    var imgWidth,imgHeight;
+    var posbuttonX,posbuttonY;
+    var nbBtn;
+    return function(scope, element, attrs) {
+      console.log(attrs.id)
+        element.bind("mouseup", function(){
+          nbBtn=document.querySelectorAll('.dragbtn').length
+          imgWidth=angular.element(document.querySelector('.picturezone')).prop('width');
+          imgHeight=angular.element(document.querySelector('.picturezone')).prop('height');
+          posbuttonX=angular.element(document.querySelector('#btn'+nbBtn)).prop('offsetTop')+angular.element(document.querySelector('.symbolstodrag')).prop('offsetTop')-angular.element(document.querySelector('.picturezone')).prop('offsetTop')+angular.element(document.querySelector('.dragbtn')).prop('height')/2
+          posbuttonY=angular.element(document.querySelector('#btn'+nbBtn)).prop('offsetLeft')+angular.element(document.querySelector('.symbolstodrag')).prop('offsetLeft')-angular.element(document.querySelector('.picturezone')).prop('offsetLeft')+angular.element(document.querySelector('.dragbtn')).prop('width')/2
+          if ((posbuttonY>imgWidth)||(posbuttonX>imgHeight)||(posbuttonX<0)||(posbuttonY<0)){
+            element.css({left: "0px",top: "0px"});
+          }
+          scope.$apply(attrs.ondrop);
+        })
+      }
+    });
 }
 
 

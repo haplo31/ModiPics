@@ -154,6 +154,7 @@ angular.module('modiPicsApp')
   $timeout(function(){$('.slider').slider(); }, 0);   
   $scope.modalItem=item;
   $scope.step=0;
+  $scope.compStep=0;
   $scope.next = function () {
     console.log("next")
     $scope.step+=1;
@@ -168,7 +169,6 @@ angular.module('modiPicsApp')
     $modalInstance.dismiss('cancel');
   };
 
-  $scope.uploadedImg=false
   //Gerer la suppression
   $scope.uploadFiles = function(file, errFiles) {
     $scope.f = file;
@@ -182,7 +182,6 @@ angular.module('modiPicsApp')
           console.log('Success ' + resp.config.data.file.name + 'uploaded. Response: ' + resp.data);
           $http.post('/api/pictures/',{owner:"John",artist:"Protoshop",modtype:"",vote:0,name:resp.config.data.file.name,src:"http://localhost:9000/public/"+resp.config.data.file.name});
           $scope.uploadedImgSrc="http://localhost:9000/public/"+resp.config.data.file.name;
-          $scope.uploadedImg=true;
       }, function (resp) {
           console.log('Error status: ' + resp.status);
       }, function (evt) {
@@ -191,30 +190,45 @@ angular.module('modiPicsApp')
       });
     }   
   }
-  var imgWidth,imgHeight;
-  var posbuttonX,posbuttonY;
-  $scope.drag = function() {
-    console.log("Drag");
+  $scope.btnToDrag=[{'posTop': '0','posLeft': '0'}]
+  $scope.drag = function(attr) {
   }
-  $scope.drop = function() {
-    console.log("Drop");
+  var btnReset=false;
+  $scope.click = function(index) {
+    if(angular.element(document.querySelector('#btn'+index)).prop('offsetTop')<0){
+      console.log("moins")
+      btnReset=true;
+      // $scope.btnToDrag[$scope.btnToDrag.map(function(e) { return e.id; }).indexOf(id)].posTop=0;
+      // $scope.btnToDrag[$scope.btnToDrag.map(function(e) { return e.id; }).indexOf(id)].posLeft=0;
+      console.log($scope.btnToDrag[index-1])
+      $scope.btnToDrag.splice((index-1),1)
+    }
+    if ($scope.btnToDrag.length>1){
+      $scope.compStep=1;
+    }
+    else{
+      $scope.compStep=0;
+    }
   }
-  $scope.buttonDrop = function(event,ui){
-    imgWidth=angular.element(document.querySelector('.picturezone')).prop('width');
-    imgHeight=angular.element(document.querySelector('.picturezone')).prop('height');
-    posbuttonX=angular.element(document.querySelector('.dragbtn')).prop('offsetTop')-angular.element(document.querySelector('.picturezone')).prop('offsetTop')+angular.element(document.querySelector('.dragbtn')).prop('height')/2
-    posbuttonY=angular.element(document.querySelector('.dragbtn')).prop('offsetLeft')-angular.element(document.querySelector('.picturezone')).prop('offsetLeft')+angular.element(document.querySelector('.dragbtn')).prop('width')/2
-    console.log (imgWidth)
-    console.log (imgHeight)
-    console.log (posbuttonX)
-    console.log (posbuttonY)
+  var nbBtnOnPic=0;
+  $scope.drop = function(valid){
+    if (angular.element(document.querySelector('#btn'+$scope.btnToDrag.length)).prop('offsetTop')>=0){
+      console.log("reset")
+    }
+    else{
+    //nbBtnOnPic++;
+      $scope.btnToDrag.push({'posTop': '0','posLeft': '0'})
+      console.log("push")
+    }
+    if ($scope.btnToDrag.length>1){
+      $scope.compStep=1;
+    }
+    else{
+      $scope.compStep=0;
+    }
   }
-  $scope.buttonOut = function(event,ui){
-    console.log("out")
+  $scope.goto = function(index){
+    if(index<=$scope.compStep+1)
+    $scope.step=index;
   }
 })
-.controller('dragCtrl', function($scope, $q) {
-  $scope.list1 = {title: 'Drag and Drop with default confirmation'};
-  $scope.list2 = [];
-
-});
