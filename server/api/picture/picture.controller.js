@@ -13,7 +13,7 @@ exports.mostVotedPics = function(req, res) {
 };
 //Get last 50 pics
 exports.last50Pics = function(req, res) {
-  Picture.find().sort({ date : 'desc'}).limit(50).exec(function (err, pictures) {
+  Picture.find().sort({ date : 'desc'}).limit(150).exec(function (err, pictures) {
     if(err) { return handleError(res, err); }
     return res.status(200).json(pictures);
   });

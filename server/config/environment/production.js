@@ -2,11 +2,13 @@
 
 // Production specific configuration
 // =================================
+var ip;
+require('dns').lookup(require('os').hostname(), function (err, add, fam) {
+  ip=add;
+})
 module.exports = {
   // Server IP
-  ip:       process.env.OPENSHIFT_NODEJS_IP ||
-            process.env.IP ||
-            undefined,
+  ip:       ip,
 
   // Server port
   port:     process.env.OPENSHIFT_NODEJS_PORT ||

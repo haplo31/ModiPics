@@ -9,7 +9,10 @@ function requiredProcessEnv(name) {
   }
   return process.env[name];
 }
-
+var ip;
+require('dns').lookup(require('os').hostname(), function (err, add, fam) {
+  ip=add;
+})
 // All configurations will extend these options
 // ============================================
 var all = {
@@ -22,7 +25,7 @@ var all = {
   port: process.env.PORT || 9000,
 
   // Server IP
-  ip: process.env.IP || 'localhost',
+  ip: process.env.IP || ip,
 
   // Should we populate the DB with sample data?
   seedDB: false,

@@ -96,7 +96,6 @@ a.navbartitle:hover{
   border-radius: 20px;
   position: absolute;
 }
-
 .flowGridItem{
     position: relative;
     float: left;
@@ -234,9 +233,6 @@ img.modalImg{
     margin: 0px 0px 20px -30px; 
     padding: 0px 0px 20px 0px;
     cursor: default;
-    pointer-events: none;
-
-
 }
 .deckgrid[deckgrid]::before {
     /* Specifies that the grid should have a maximum of 4 columns. Each column will have the classes 'column' and 'column-1-4' */
