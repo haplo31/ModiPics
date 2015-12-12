@@ -4,7 +4,7 @@
 	  <h4 ng-if="modal.title" ng-bind="modal.title" class="modal-title"></h4>
 	</div>
 	<div class="modal-body">
-		<img class="modalImg" src="{{modalItem.src}}"/>
+		<img class="modalImg" src="{{'/public/'+modalItem.src}}"/>
 		<div class="legend">
 		<p class="modal-text"><b>Author: </b><a>{{modalItem.owner}} </a></p>
 		<p class="modal-text"><b>Artist: </b><a>{{modalItem.artist}} </a></p>

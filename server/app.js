@@ -36,6 +36,7 @@ require('./routes')(app);
 var busboy = require('connect-busboy');
 var path = require('path');
 var fs = require('fs-extra');
+var lwip=require('lwip');
 app.use(busboy());
 app.use(express.static(path.join(__dirname, 'app')));
 app.use(express.static(path.join(__dirname, '.tmp'))); //TODO
@@ -48,6 +49,26 @@ app.route('/upload')
       file.pipe(stream);
       stream.on('close', function () {
         console.log('File ' + filename + ' is uploaded');
+
+		lwip.open(__dirname +'/uploads/'+filename, function(err, image){
+		  // check err...
+		  // define a batch of manipulations and save to disk as JPEG:
+		  var imgRatio = image.height()/image.width();
+		  var tempHeight = 285*imgRatio
+		  if ((285*imgRatio)>570){
+		  	image.batch()
+		  	.resize(570/imgRatio,570)
+		    .writeFile(__dirname +'/uploads/samples/'+filename, function(err){
+		    });
+		  }
+		  else{
+		  	image.batch()
+		  	.resize(285,285*imgRatio)
+		    .writeFile(__dirname +'/uploads/samples/'+filename, function(err){
+		    });
+		  }
+		});
+
         res.json({
           filename: filename
         });

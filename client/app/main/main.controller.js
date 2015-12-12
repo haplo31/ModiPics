@@ -42,7 +42,7 @@ angular.module('modiPicsApp')
       $scope.catVisible=false;
       $scope.mozaic=true;
       $scope.dashboard=false;
-      $http.get('/api/pictures/last').success(function(pictures) {
+      $http.get('/api/pictures/most').success(function(pictures) {
         $scope.Pics=pictures
       });
     }
@@ -181,7 +181,7 @@ angular.module('modiPicsApp')
       }).then(function (resp) {
         console.log(file)
           console.log('Success ' + resp.config.data.file.name + 'uploaded. Response: ' + resp.data);
-          $http.post('/api/pictures/',{owner:"John",artist:"Protoshop",modtype:"",vote:0,name:resp.config.data.file.name,src:"/public/"+resp.config.data.file.name});
+          $http.post('/api/pictures/',{owner:"John",artist:"Protoshop",modtype:"",vote:0,name:resp.config.data.file.name,src:resp.config.data.file.name});
           $scope.uploadedImgSrc="http://"+location.host+"/public/"+resp.config.data.file.name;
       }, function (resp) {
           console.log('Error status: ' + resp.status);
