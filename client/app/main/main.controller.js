@@ -136,7 +136,6 @@ angular.module('modiPicsApp')
   );
   })
 .controller('ModalInstanceCtrl', function ($scope, $modalInstance, item, vote) {
-
   $scope.modalItem=item;
   $scope.ok = function () {
     $modalInstance.close($scope.selected.item);
@@ -152,6 +151,15 @@ angular.module('modiPicsApp')
   };
 })
 .controller('CreaInstanceCtrl', function ($scope, $modalInstance,$timeout, item, Upload,$http) {
+  console.log(document.documentElement.clientWidth)
+  if (document.documentElement.clientWidth<400){
+    $scope.sliderSource1="/assets/images/rem1l.png"
+    $scope.sliderSource2="/assets/images/rem2l.png"
+  }
+  else{
+    $scope.sliderSource1="/assets/images/rem1.png"
+    $scope.sliderSource2="/assets/images/rem2.png"
+  }
   $timeout(function(){$('.slider').slider(); }, 0);   
   $scope.modalItem=item;
   $scope.step=0;
@@ -191,40 +199,24 @@ angular.module('modiPicsApp')
       });
     }   
   }
-  $scope.btnToDrag=[{'posTop': '0','posLeft': '0'}]
-  $scope.drag = function(attr) {
+  $scope.btnPlaced = [];
+  var posTop,posLeft;
+  $scope.select= function(color){
+    $scope.redPointer = true;
+    return false;
   }
-  var btnReset=false;
-  $scope.click = function(index) {
-    if(angular.element(document.querySelector('#btn'+index)).prop('offsetTop')<0){
-      console.log("moins")
-      btnReset=true;
-      // $scope.btnToDrag[$scope.btnToDrag.map(function(e) { return e.id; }).indexOf(id)].posTop=0;
-      // $scope.btnToDrag[$scope.btnToDrag.map(function(e) { return e.id; }).indexOf(id)].posLeft=0;
-      console.log($scope.btnToDrag[index-1])
-      $scope.btnToDrag.splice((index-1),1)
-    }
-    if ($scope.btnToDrag.length>1){
+  $scope.clickOnImg = function(event){
+    if ($scope.redPointer === true){
+      posTop=angular.element(document.querySelector('#picturezone')).prop('offsetTop')+event.offsetY
+      posLeft=angular.element(document.querySelector('#picturezone')).prop('offsetLeft')+event.offsetX
+      $scope.btnPlaced.push({'posTop': posTop,'posLeft': posLeft})
+      $scope.redPointer = false;
       $scope.compStep=1;
     }
-    else{
-      $scope.compStep=0;
-    }
   }
-  var nbBtnOnPic=0;
-  $scope.drop = function(valid){
-    if (angular.element(document.querySelector('#btn'+$scope.btnToDrag.length)).prop('offsetTop')>=0){
-      console.log("reset")
-    }
-    else{
-    //nbBtnOnPic++;
-      $scope.btnToDrag.push({'posTop': '0','posLeft': '0'})
-      console.log("push")
-    }
-    if ($scope.btnToDrag.length>1){
-      $scope.compStep=1;
-    }
-    else{
+  $scope.removePlaced = function(index){
+    $scope.btnPlaced.splice(index,1)
+    if ($scope.btnPlaced.length === 0){
       $scope.compStep=0;
     }
   }

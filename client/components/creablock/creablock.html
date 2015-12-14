@@ -8,9 +8,11 @@
 	</div>
 	<div class="modal-body">
 		<div class="comparepic" ng-show="step==0">
+			<div class="slidercontainer">
 			<div class="slider">
-			  <div class="left image"> <img src="/assets/images/rem1.png" w="200" h="200"/> </div>
-			  <div class="right image"> <img src="/assets/images/rem2.png"/> </div>
+			  <div class="left image"> <img src="{{sliderSource1}}"/> </div>
+			  <div class="right image"> <img src="{{sliderSource2}}"/> </div>
+			</div>
 			</div>
 			<span class="captionretouch">Select the separator on the left on the picture and drag it to see an example of realisation</span>
 			<div class="explanation">
@@ -24,22 +26,25 @@
 		</div>
 
 		<div class="updloadpic" ng-show="step==1">
-				<span class="explanation-1" ng-hide="uploadedImgSrc">First, choose the picture you want to use</span>
-				<button class="btn btn-primary btn-large" type="file" ngf-select="uploadFiles($file, $invalidFiles)" ngf-max-size="20MB" accept="image/*" ng-hide="uploadedImgSrc">Upload</button>
-				<div class="draggablearea">
-					<img class="picturezone" id="picturezone" ng-src="{{uploadedImgSrc || '/assets/images/white.png'}}">
-					<div class="symbolstodrag">
-						<img ng-repeat='(index,btn) in btnToDrag' draggable="" ng-mousedown="click((index+1))" ondrag="drag()" ondrop="drop()" id="{{ 'btn' + (index+1) }}" class="dragbtn noselect" ng-src="/assets/images/red_round_button.png" style="position:absolute;top:0px;left:0px;" ng-show="uploadedImgSrc">
-					</div>
-					<div class="explanation2" ng-show="uploadedImgSrc">
-					<span class="lgddot explanation-5">Now, you can drag one red dot on every person you want to remove</span>
-					<span class="expland"> And </span>
-					<span class="addinfos" >Add any additionnal information you want to provide about your desires:</span>
-					<input type="texte" class="addinfostyped">
-					</div>
+			<span class="explanation-1" ng-hide="uploadedImgSrc">First, choose the picture you want to use</span>
+			<button class="btn btn-primary btn-large" type="file" ngf-select="uploadFiles($file, $invalidFiles)" ngf-max-size="20MB" accept="image/*" ng-hide="uploadedImgSrc">Upload</button>
+			<div class="area" ng-class="{redpointer:redPointer}">
+				<img class="picturezone" id="picturezone" ng-src="{{uploadedImgSrc || '/assets/images/white.png'}}" ng-mouseup="clickOnImg($event)">
+				<div class="placedbuttons" ng-repeat='(index,btn) in btnPlaced'>
+				<img  id="{{ 'btn' + (index+1) }}" class="dragbtn noselect" ng-src="/assets/images/red_round_button.png" ng-style="{'left':btn.posLeft, 'top': btn.posTop}" >
+				<input type="image" src="/assets/images/round_close_button.png" type="button" ng-style="{'left':btn.posLeft+8, 'top': btn.posTop+8}" ng-click="removePlaced(index)" class="noselect"/>
+				</div> 
+				<div class="symbolstodrag" ng-show="uploadedImgSrc">
+					 <input id="redbtn" type="radio" name="buttons" value="redbtn" ng-click="select(red)" ng-checked="redPointer"/>
+					 <label class="buttons redbtn" for="redbtn"></label>
 				</div>
-<!-- 				<img class="picturezone" ng-src="{{uploadedImgSrc || '/assets/images/white.png'}}" data-drop="true" jqyoui-droppable="{multiple:true, onDrop:'buttonDrop', onOut:'buttonOut'}">
-				<img data-drag="true" jqyoui-draggable="{animate: true,deepCopy: true}" class="dragbtn noselect" ng-src="/assets/images/red_round_button.png"> -->
+				<div class="explanation2" ng-show="uploadedImgSrc">
+				<span class="lgddot explanation-5">Now, you can select the red dot and put it on the person you want to remove</span>
+				<span class="expland"> And </span>
+				<span class="addinfos" >Add any additionnal information you want to provide about your desires:</span>
+				<input type="texte" class="addinfostyped">
+				</div>
+			</div>
 		</div>
 
 

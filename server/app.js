@@ -59,12 +59,14 @@ app.route('/upload')
 		  	image.batch()
 		  	.resize(570/imgRatio,570)
 		    .writeFile(__dirname +'/uploads/samples/'+filename, function(err){
+		    	console.log("done");
 		    });
 		  }
 		  else{
 		  	image.batch()
 		  	.resize(285,285*imgRatio)
 		    .writeFile(__dirname +'/uploads/samples/'+filename, function(err){
+		    	console.log("done");
 		    });
 		  }
 		});
