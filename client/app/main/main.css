@@ -69,10 +69,6 @@ h3 {
 .subtitle{
     margin-bottom: 2%;
 }
-.choicebutton {
-  -webkit-transition:all linear 0.5s;
-  transition:all linear 0.5s;
-}
 .choicebutton.ng-hide {
   opacity:0;
 }

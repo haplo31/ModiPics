@@ -6,11 +6,15 @@ angular.module('modiPicsApp', [
   'ngSanitize',
   'ngRoute',
   'btford.socket-io',
-  'ui.bootstrap',
   'ngAnimate',
+  'ui.bootstrap',
   'akoenig.deckgrid',
-  'ngFileUpload'
+  'ngFileUpload',
+  'ngActivityIndicator'
 ])
+  .config(['$activityIndicatorProvider', function ($activityIndicatorProvider) {
+        $activityIndicatorProvider.setActivityIndicatorStyle('CircledDark');
+    }])
   .config(function ($routeProvider, $locationProvider, $httpProvider) {
     $routeProvider
       .otherwise({

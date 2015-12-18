@@ -26,31 +26,72 @@
 		</div>
 
 		<div class="updloadpic" ng-show="step==1">
-			<span class="explanation-1" ng-hide="uploadedImgSrc">First, choose the picture you want to use</span>
-			<button class="btn btn-primary btn-large" type="file" ngf-select="uploadFiles($file, $invalidFiles)" ngf-max-size="20MB" accept="image/*" ng-hide="uploadedImgSrc">Upload</button>
+			<span class="explanation-1" ng-hide="imageAsk">First, choose the picture you want to use</span>
+			<button class="btn btn-primary btn-large" type="file" ngf-select="uploadFiles($file, $invalidFiles)" ngf-max-size="20MB" accept="image/*" ng-hide="imageAsk">Upload</button>
+				<!-- <div ng-activity-indicator class="center loading" ng-show="imageAsk">Your picture is uploading, please wait.</div> -->
 			<div class="area" ng-class="{redpointer:redPointer}">
-				<img class="picturezone" id="picturezone" ng-src="{{uploadedImgSrc || '/assets/images/white.png'}}" ng-mouseup="clickOnImg($event)">
+				<img class="picturezone" id="picturezone" ngf-thumbnail="file || '/assets/images/white.png'" ng-mouseup="clickOnImg($event)">
 				<div class="placedbuttons" ng-repeat='(index,btn) in btnPlaced'>
 				<img  id="{{ 'btn' + (index+1) }}" class="dragbtn noselect" ng-src="/assets/images/red_round_button.png" ng-style="{'left':btn.posLeft, 'top': btn.posTop}" >
 				<input type="image" src="/assets/images/round_close_button.png" type="button" ng-style="{'left':btn.posLeft+8, 'top': btn.posTop+8}" ng-click="removePlaced(index)" class="noselect"/>
 				</div> 
-				<div class="symbolstodrag" ng-show="uploadedImgSrc">
+				<div class="symbolstodrag" ng-show="file">
 					 <input id="redbtn" type="radio" name="buttons" value="redbtn" ng-click="select(red)" ng-checked="redPointer"/>
 					 <label class="buttons redbtn" for="redbtn"></label>
 				</div>
-				<div class="explanation2" ng-show="uploadedImgSrc">
+				<div class="explanation2" ng-show="file">
 				<span class="lgddot explanation-5">Now, you can select the red dot and put it on the person you want to remove</span>
 				<span class="expland"> And </span>
 				<span class="addinfos" >Add any additionnal information you want to provide about your desires:</span>
-				<input type="texte" class="addinfostyped">
+				<input type="text" class="addinfostyped" ng-model="infos">
 				</div>
 			</div>
 		</div>
 
-
+		<div class="recap" ng-show="step==2">
+			<img class="picturerecap" id="picturerecap" ngf-thumbnail="file">
+			<div class="recap-1">
+				<span><br />Modifications Number : </span><span class="numbermod">{{btnPlaced.length}}</span>
+			</div>
+			<div  class="recap-2">
+				<span><br />Wanted Quality :</span>
+				<div class="btn-group" ng-click="quaselected(radioModel);">
+	      	<label class="btn btn-success quachoice" ng-model="radioModel" btn-radio="'Good'" uncheckable value="1">Good</label>
+	        <label class="btn btn-success quachoice" ng-model="radioModel" btn-radio="'Excellent'" uncheckable value="2">Excellent</label>
+	        <label class="btn btn-success quachoice" ng-model="radioModel" btn-radio="'Perfect'" uncheckable value="3">Perfect</label>
+  			</div>
+  			<span class="quainfos">{{qualityMessage}}</span>
+  		</div>
+  		<div class="recap-3">
+				<span>Additionnal infos : </span><span class="addInfos">{{ addInfos || 'None'}}</span>
+			</div>
+		</div>
+		<div class="recap" ng-show="step==3">
+			<div>
+				<span class="recaptitle">Artist appreciation</span>
+				<div class="btn-group">
+				<img  class="starimg" ng-src="/assets/images/starNew.png" ng-class="{ratingSelected: noratingSelected,norating: noratingSelected}" ng-click="noratingSelected = !noratingSelected;estimatePrice()">
+				<img  class="starimg" ng-src="/assets/images/starBronze.png" ng-class="{ratingSelected: bronzeratingSelected,bronzerating: bronzeratingSelected}" ng-click="bronzeratingSelected = !bronzeratingSelected;estimatePrice()" >
+				<img  class="starimg" ng-src="/assets/images/starSilver.png" ng-class="{ratingSelected: silverratingSelected,silverrating: silverratingSelected}" ng-click="silverratingSelected = !silverratingSelected;estimatePrice()" >
+				<img  class="starimg" ng-src="/assets/images/starGold.png" ng-class="{ratingSelected: goldratingSelected,goldrating: goldratingSelected}" ng-click="goldratingSelected = !goldratingSelected;estimatePrice()" >
+  			</div>
+<!-- 				<div ng-repeat="(key, value) in artistRating" class="starrating" ng-click="changeStar(key)">
+					<input type="image" ng-src={{artistRating[key].url}} class="starimg" ng-class="{'ratingSelected':artistRating[key].selected === '1'}"/>
+ 					<div class="rating">
+						<span class="ratingnumber">{{value.symbol}}</span>
+					</div>
+  			</div> -->
+  			<div>
+					<span class="recaptitle"><br />Estimated cost: </span>
+					<span class="pricingvalue">{{estimatedPrice}}</span>
+  			</div>
+  			<div>
+  				 <button class="btn-xl btn btn-primary finalize">Finalize</button>
+  			</div>
+		</div>
 	</div>
 	<div class="modal-footer">
-		<span ng-repeat="i in [0,1,2,3,4]" class="dotpos" ng-class="{'active': i == step}" ng-click="goto(i)">●</span>
-		<button class="btn btn-large btn-primary nextbutton" ng-click="next()" ng-show="step<=compStep">&#10140;</button>
+		<span ng-repeat="i in [0,1,2,3]" class="dotpos" ng-class="{'active': i == step}" ng-click="goto(i)">●</span>
+		<button class="btn btn-large btn-primary nextbutton " ng-click="next()" ng-show="step<=compStep">&#10140;</button>
 	</div>
 </div>
