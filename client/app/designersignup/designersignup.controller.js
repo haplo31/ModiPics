@@ -3,6 +3,7 @@
 angular.module('modiPicsApp')
   .controller('DesignersignupCtrl', function ($scope) {
     $scope.step=0;
+    $scope.barStep=[{value:"20",text:"Account Informations"}];
     $scope.skills=[];
     $scope.register = function(form) {
       $scope.submitted = true;
@@ -36,8 +37,9 @@ angular.module('modiPicsApp')
       console.log(key)
       $scope.skills.splice(key,1);
     }
-    $scope.nextStep = function(){
+    $scope.nextStep = function(actualstep){
       $scope.step++;
+      $scope.barStep.push({value:"20",text:actualstep})
     }
     $scope.loginOauth = function(provider) {
       $window.location.href = '/auth/' + provider;

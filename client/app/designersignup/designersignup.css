@@ -1,5 +1,20 @@
+.accountinfo{
+	font-size: 220%;
+	padding-top: 5%;
+}
+.accountinfo input{
+	padding-top: 3%;
+}
 .nextbtn{
 	text-align: right;
+}
+.footerbar{
+	margin-top: 5%;
+	padding-top: 5%;
+}
+.footersignup{
+	display: block;
+
 }
 .explan{
 	display: block;
@@ -15,9 +30,9 @@
 	font-size: 0.8vw;
 }
 .quablock{
-	margin-top: 20%;
+	margin-top: 15%;
 	text-align: center;
-	margin-bottom: 5%;
+	margin-bottom: 3%;
 }
 .example{
 	text-align: center;
@@ -45,8 +60,12 @@
 	border: #00796B 2px solid;
 }
 .specskill{
+	display:inline-block;
 	text-align: center;
 	margin-top: 1%;
+	padding-bottom: 5%;
+	height: 100%;
+	width: 100%;
 }
 .skill{
 	margin-top: 1%;

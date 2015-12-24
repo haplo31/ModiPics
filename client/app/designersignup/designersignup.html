@@ -1,6 +1,6 @@
 <div ng-include="'components/navbar/navbar.html'"></div>
 
-<div class="container">
+<div class="container designersignup">
   <div class="row">
     <div class="col-sm-12">
       
@@ -8,7 +8,7 @@
     <div class="col-sm-12">
 
       <form class="form" name="form" ng-submit="register(form)" novalidate>
-        <div ng-show="step==0">
+        <div ng-show="step==0" class="accountinfo">
           <div class="form-group" ng-class="{ 'has-success': form.username.$valid && submitted,
                                               'has-error': form.username.$invalid && submitted }">
             <label>Pseudo</label>
@@ -18,6 +18,7 @@
               An username is required
             </p>
           </div>
+          <br/>
           <div class="form-group" ng-class="{ 'has-success': form.firstname.$valid && submitted,
                                               'has-error': form.firstname.$invalid && submitted }">
             <label>First Name</label>
@@ -45,6 +46,7 @@
               A location is required
             </p>
           </div>
+          <br/>
           <div class="form-group" ng-class="{ 'has-success': form.email.$valid && submitted,
                                               'has-error': form.email.$invalid && submitted }">
             <label>Email</label>
@@ -62,7 +64,6 @@
               {{ errors.email }}
             </p>
           </div>
-
           <div class="form-group" ng-class="{ 'has-success': form.password.$valid && submitted,
                                               'has-error': form.password.$invalid && submitted }">
             <label>Password</label>
@@ -79,8 +80,9 @@
               {{ errors.password }}
             </p>
           </div>
-          <div class="nextbtn">
-            <button class="btn btn-lg" ng-click="nextStep()">
+          <br/>
+          <div class="nextbtn footersignup">
+            <button class="btn btn-lg" ng-click="nextStep('Generic Skills')">
               Generic Skills->
             </button>
           </div>
@@ -116,8 +118,8 @@
               <quachoice is-disabled="!incr"></quachoice>
             </div>            
           </div>
-          <div class="nextbtn">
-            <button class="btn btn-lg" ng-click="nextStep()">
+          <div class="nextbtn footersignup">
+            <button class="btn btn-lg" ng-click="nextStep('Specific Skills')">
               Specific Skills->
             </button>
           </div>
@@ -147,8 +149,8 @@
               </div>
             </div>
           </div>
-          <div class="nextbtn">
-            <button class="btn btn-lg" ng-click="nextStep()">
+          <div class="nextbtn footersignup" >
+            <button class="btn btn-lg" ng-click="nextStep('QQ Explanation')">
               QQ Explanation->
             </button>
           </div>
@@ -158,9 +160,13 @@
             Sign up
           </button>
         </div>
-        <hr>
+        
       </form>
     </div>
   </div>
-  <hr>
+  <footer class=" footerbar">
+  <div class="container">
+      <progress><bar ng-repeat="bar in barStep track by $index" value="bar.value" type="success"><span>{{bar.text}}</span></bar></progress>
+  </div>
+  </footer>
 </div>
