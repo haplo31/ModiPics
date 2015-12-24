@@ -1,0 +1,10 @@
+.quachoice{
+	text-align: center;
+	padding: 2%;
+}
+
+.quachoice:disabled{
+	color: black;
+	background: black;
+
+}

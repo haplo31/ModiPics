@@ -123,8 +123,6 @@ span[class^="recap-"], div[class*="recap-"]{
 }
 .quachoice{
 	font-size: 2vh;
-	padding-top:1vh;
-	padding-right: 2vh;
 	text-shadow: #00796B 1px 1px, #00796B -1px 1px, #00796B -1px -1px, #00796B 1px -1px;
 
 }

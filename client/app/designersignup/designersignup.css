@@ -1,0 +1,71 @@
+.nextbtn{
+	text-align: right;
+}
+.explan{
+	display: block;
+	text-align: center;
+	font-family: 'Over the Rainbow';
+	font-size: 1.25vw;
+	font-weight: bold;
+}
+.explan2{
+	display: block;
+	text-align: center;
+	font-family: 'Over the Rainbow';
+	font-size: 0.8vw;
+}
+.quablock{
+	margin-top: 20%;
+	text-align: center;
+	margin-bottom: 5%;
+}
+.example{
+	text-align: center;
+	width: 60%;
+	margin-left: 20%;
+	margin-top: 2%;
+}
+.compselecting{
+	border: lightgrey 5px solid;
+	text-align: center;
+	font-size: 120%;
+	font-weight: bold;
+	padding:2%;
+	margin-top: 0.5%;
+	margin-bottom: 0.5%;
+	cursor: default;
+}
+.compselected{
+	border: #00796B 5px solid;
+}
+.comptitle{
+	font-family: 'Over the Rainbow';
+	font-weight: bold;
+	font-size: 170%;
+	border: #00796B 2px solid;
+}
+.specskill{
+	text-align: center;
+	margin-top: 1%;
+}
+.skill{
+	margin-top: 1%;
+	border: lightgrey 5px solid;
+	font-size: 200%;
+	padding: 1%;
+}
+.skillattr{
+	margin: 2%;
+}
+.skillimg{
+	width: 100%;
+	border: #00796B 4px solid; 
+}
+#close{
+	cursor: default;
+	text-align: center;
+	display: inline;
+	right: 0;
+	top:-5%;
+	position: absolute;
+}

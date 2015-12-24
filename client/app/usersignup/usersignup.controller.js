@@ -1,15 +1,7 @@
 'use strict';
 
 angular.module('modiPicsApp')
-  .controller('SignupCtrl', function ($scope, Auth, $location, $window) {
-    $scope.user = {};
-    $scope.errors = {};
-    $scope.startDesignerSignup= function(){
-      $location.path("/designersignup")
-    }
-    $scope.startUserSignup= function(){
-      $location.path("/usersignup")
-    }
+  .controller('UsersignupCtrl', function ($scope, Auth, $location, $window) {
     $scope.register = function(form) {
       $scope.submitted = true;
 

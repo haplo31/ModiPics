@@ -10,7 +10,8 @@ angular.module('modiPicsApp', [
   'ui.bootstrap',
   'akoenig.deckgrid',
   'ngFileUpload',
-  'ngActivityIndicator'
+  'ngActivityIndicator',
+  'ImageZoom'
 ])
   .config(['$activityIndicatorProvider', function ($activityIndicatorProvider) {
         $activityIndicatorProvider.setActivityIndicatorStyle('CircledDark');

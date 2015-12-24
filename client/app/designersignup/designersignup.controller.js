@@ -1,15 +1,9 @@
 'use strict';
 
 angular.module('modiPicsApp')
-  .controller('SignupCtrl', function ($scope, Auth, $location, $window) {
-    $scope.user = {};
-    $scope.errors = {};
-    $scope.startDesignerSignup= function(){
-      $location.path("/designersignup")
-    }
-    $scope.startUserSignup= function(){
-      $location.path("/usersignup")
-    }
+  .controller('DesignersignupCtrl', function ($scope) {
+    $scope.step=0;
+    $scope.skills=[];
     $scope.register = function(form) {
       $scope.submitted = true;
 
@@ -26,7 +20,7 @@ angular.module('modiPicsApp')
         .catch( function(err) {
           err = err.data;
           $scope.errors = {};
-
+          step=0;
           // Update validity of form fields that match the mongoose errors
           angular.forEach(err.errors, function(error, field) {
             form[field].$setValidity('mongoose', false);
@@ -35,7 +29,16 @@ angular.module('modiPicsApp')
         });
       }
     };
-
+    $scope.addSkill = function(){
+      $scope.skills.push({name:"",tags:"",price:""});
+    }
+    $scope.remSkill = function(key){
+      console.log(key)
+      $scope.skills.splice(key,1);
+    }
+    $scope.nextStep = function(){
+      $scope.step++;
+    }
     $scope.loginOauth = function(provider) {
       $window.location.href = '/auth/' + provider;
     };

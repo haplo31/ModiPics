@@ -36,7 +36,21 @@
 .navbar-text {
     margin-left: 15px;
 }
-
+.signuptitle{
+    display: block;
+    text-align: center;
+    font-family: 'Over the Rainbow';
+    font-size: 7vw;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: bold;
+    line-height: 100%;
+    margin-bottom: 10vh;
+}
+.accounttype{
+    text-align: center;
+    margin-bottom: 1vh;
+}
 h1 {
     font-family: 'Over the Rainbow';
     font-size: 7vw;
@@ -45,14 +59,12 @@ h1 {
     font-weight: 500;
     line-height: 17%;
 }
-h2 { 
-    font-family: 'Open Sans', 
-    sans-serif; 
-    font-size: 3vw; 
-    font-weight: 300; 
-    line-height: 20.74%; 
-    margin: 0 0 46.36%; 
-    text-align: center; 
+h2{
+    font-family: 'Over the Rainbow';
+    text-align: center;
+    display: block;
+    font-weight: bold;
+    font-size: 4vw
 }
 h3 {
     font-family: 'Over the Rainbow';
