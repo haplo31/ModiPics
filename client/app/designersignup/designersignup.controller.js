@@ -5,6 +5,18 @@ angular.module('modiPicsApp')
     $scope.step=0;
     $scope.barStep=[{value:"20",text:"Account Informations"}];
     $scope.skills=[];
+    $scope.addPersonPrice="17€";
+    $scope.remPersonPrice="13€";
+    $scope.impPrice="18€";
+    $scope.addPersonPriceBronze="19€";
+    $scope.remPersonPriceBronze="14€";
+    $scope.impPriceBronze="20€";
+    $scope.addPersonPriceSilver="20€";
+    $scope.remPersonPriceSilver="17€";
+    $scope.impPriceSilver="22€";
+    $scope.addPersonPriceGold="24€";
+    $scope.remPersonPriceGold="19€";
+    $scope.impPriceGold="26€";
     $scope.register = function(form) {
       $scope.submitted = true;
 
@@ -40,6 +52,10 @@ angular.module('modiPicsApp')
     $scope.nextStep = function(actualstep){
       $scope.step++;
       $scope.barStep.push({value:"20",text:actualstep})
+    }
+    $scope.prevStep = function(){
+      $scope.step--;
+      $scope.barStep.splice($scope.barStep.length-1,1)
     }
     $scope.loginOauth = function(provider) {
       $window.location.href = '/auth/' + provider;

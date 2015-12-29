@@ -119,12 +119,73 @@
             </div>            
           </div>
           <div class="nextbtn footersignup">
+            <button class="btn btn-lg" ng-click="prevStep()">
+              <-Account informations
+            </button>    
+            <button class="btn btn-lg" ng-click="nextStep('QQ Explanation')">
+              QQ Explanation->
+            </button>
+          </div>
+        </div>
+        <div ng-show="step==2">
+          <h2>QuickQuery Explanation</h2>
+          <span class="explan">QuickQuery is a new system to get editing demands.</span>
+          <span class="explanqq">Once logged on QQ System, requests corresponding your profile will be send to you.</span>
+          <span class="explanqq">You can accept or refuse any proposal. If you accept a request, your profile will be send to the requester for his validation and the job will be yours.</span>
+          <span class="explanqq">You have 48 hours to complete the job and send back the result.</span>
+          <span class="explanqq">The editing price is automatically calculated based on market offer and demand.</span>
+          <span class="explanqq">Here is some actual pricing :</span>
+          <table class="pricingtable table table-hover">
+            <thead>
+              <tr tooltip="For every job, the requester can chose to give you an award. When you have enough awards, you win the corresponding badge and your QQ pricing for this type of request is reevaluated." tooltip-placement="right" tooltip-trigger="mouseenter">
+                <td></td>
+                <td></td>
+                <td><img class="ratinglegend" src="/assets/images/starBronze.png"></td>
+                <td><img class="ratinglegend" src="/assets/images/starSilver.png"></td>
+                <td><img class="ratinglegend" src="/assets/images/starGold.png"></td>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Remove 1 person</td>
+                <td>{{remPersonPrice}}</td>
+                <td>{{remPersonPriceBronze}}</td>
+                <td>{{remPersonPriceSilver}}</td>
+                <td>{{remPersonPriceGold}}</td>
+              </tr>
+              <tr>
+                <td>Adding 1 person</td>
+                <td>{{addPersonPrice}}</td>
+                <td>{{addPersonPriceBronze}}</td>
+                <td>{{addPersonPriceSilver}}</td>
+                <td>{{addPersonPriceGold}}</td>
+              </tr>
+              <tr>
+                <td>General Improvement</td>
+                <td>{{impPrice}}</td>
+                <td>{{impPriceBronze}}</td>
+                <td>{{impPriceSilver}}</td>
+                <td>{{impPriceGold}}</td>
+              </tr>
+            </tbody>
+          </table>
+          <a href="/fullpricing" class="completepricing">View full list of pricing</a>
+          <div class="checkbox checkbox-success">
+            <input id="checkbox" class="styled" type="checkbox">
+            <label for="checkbox">
+              Join QQ System on login ?
+            </label>
+          </div>
+          <div class="nextbtn footersignup">
+            <button class="btn btn-lg" ng-click="prevStep()">
+              <-Generic Modifications
+            </button>    
             <button class="btn btn-lg" ng-click="nextStep('Specific Skills')">
               Specific Skills->
             </button>
           </div>
         </div>
-        <div ng-show="step==2">
+        <div ng-show="step==3">
           <h2>Specific Skills</h2>
           <span class="explan">If you have other skills you want to share, set them here!</span>
           <span class="explan2"> or you can set them later on your profile...</span>
@@ -150,15 +211,24 @@
             </div>
           </div>
           <div class="nextbtn footersignup" >
-            <button class="btn btn-lg" ng-click="nextStep('QQ Explanation')">
-              QQ Explanation->
+            <button class="btn btn-lg" ng-click="prevStep()">
+              <-QQ Explanation
+            </button>            
+            <button class="btn btn-lg" ng-click="nextStep('Skill Validation')">
+              Skill Validation->
             </button>
           </div>
         </div>
         <div ng-show="step==4">
-          <button class="btn btn-inverse btn-lg btn-login" type="submit">
-            Sign up
-          </button>
+          <h2>Skill validation</h2>
+          <span class="explansv">The first time you get a job in a given category, your result will be send to our validation team before being transmitted to the requester.</span>
+          <span class="explansv">If your work corresponds to the user request, you will receive 50% of the calculated price and your competency will be validated.</span>
+          <span class="explansv">All the following jobs of this category then you will accept will be paid 100% of the calculated price.</span>
+          <div class="formvalid">      
+            <button class="btn btn-inverse btn-lg btn-login" type="submit">
+              Sign up
+            </button>
+          </div>
         </div>
         
       </form>

@@ -84,13 +84,13 @@ h3 {
 .choicebutton.ng-hide {
   opacity:0;
 }
-a:link{
+div.navbar a:link{
     color:white;
 }
-a:visited {
+div.navbar a:visited {
     color:white;
 }
-a.navbartitle:hover{
+div.navbar a.navbartitle:hover{
     background-color: #009688;
 }
 .btn-circle {
