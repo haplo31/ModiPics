@@ -83,7 +83,7 @@
           <br/>
           <div class="nextbtn footersignup">
             <button class="btn btn-lg" ng-click="nextStep('Generic Skills')">
-              Generic Skills->
+              Generic Skills &#8674;
             </button>
           </div>
         </div>
@@ -95,35 +95,59 @@
 <!--           <div class="example" image-src="/assets/images/rem1.png" data-template-url="assets/image-zoom.html" image-zoom zoom-factor="2"> -->
             <div class="col-md-6 compselecting" ng-class="{compselected: addPers}" >
               <div class="col-md-12 compselecting comptitle" ng-click="addPers = !addPers;">Adding person</div>
-              <quachoice quamodel="addpers" is-disabled="!addPers"></quachoice>
+                <div class="quablock">
+                  <label class="btn btn-success quachoice" ng-disabled="!addPers" ng-model="addpers" btn-radio="'Good'" uncheckable value="1">Good</label>
+                  <label class="btn btn-success quachoice" ng-disabled="!addPers" ng-model="addpers" btn-radio="'Excellent'" uncheckable value="2">Excellent</label>
+                  <label class="btn btn-success quachoice" ng-disabled="!addPers" ng-model="addpers" btn-radio="'Perfect'" uncheckable value="3">Perfect</label>
+                </div>
             </div>            
             <div class="col-md-6 compselecting" ng-class="{compselected: remPers}">
               <div class="col-md-12 compselecting comptitle" ng-click="remPers = !remPers">Removing person</div>
-              <quachoice quamodel="rempers" is-disabled="!remPers"></quachoice>
+              <div class="quablock">
+                <label class="btn btn-success quachoice" ng-disabled="!remPers" ng-model="rempers" btn-radio="'Good'" uncheckable value="1">Good</label>
+                <label class="btn btn-success quachoice" ng-disabled="!remPers" ng-model="rempers" btn-radio="'Excellent'" uncheckable value="2">Excellent</label>
+                <label class="btn btn-success quachoice" ng-disabled="!remPers" ng-model="rempers" btn-radio="'Perfect'" uncheckable value="3">Perfect</label>
+              </div>
             </div>
             <div class="col-md-6 compselecting" ng-class="{compselected: addObj}">
               <div class="col-md-12 compselecting comptitle" ng-click="addObj = !addObj;">Adding object</div>
-              <quachoice is-disabled="!addObj"></quachoice>
+              <div class="quablock">
+                <label class="btn btn-success quachoice" ng-disabled="!addObj" ng-model="addobj" btn-radio="'Good'" uncheckable value="1">Good</label>
+                <label class="btn btn-success quachoice" ng-disabled="!addObj" ng-model="addobj" btn-radio="'Excellent'" uncheckable value="2">Excellent</label>
+                <label class="btn btn-success quachoice" ng-disabled="!addObj" ng-model="addobj" btn-radio="'Perfect'" uncheckable value="3">Perfect</label>
+              </div>
             </div>
             <div class="col-md-6 compselecting" ng-class="{compselected: remObj}">
               <div class="col-md-12 compselecting comptitle" ng-click="remObj = !remObj;">Removing object</div>
-              <quachoice is-disabled="!remObj"></quachoice>
+              <div class="quablock">
+                <label class="btn btn-success quachoice" ng-disabled="!remObj" ng-model="remobj" btn-radio="'Good'" uncheckable value="1">Good</label>
+                <label class="btn btn-success quachoice" ng-disabled="!remObj" ng-model="remobj" btn-radio="'Excellent'" uncheckable value="2">Excellent</label>
+                <label class="btn btn-success quachoice" ng-disabled="!remObj" ng-model="remobj" btn-radio="'Perfect'" uncheckable value="3">Perfect</label>
+              </div>
             </div>
             <div class="col-md-6 compselecting" ng-class="{compselected: enh}">
               <div class="col-md-12 compselecting comptitle" ng-click="enh = !enh;">Photo Enhancements</div>
-              <quachoice is-disabled="!enh"></quachoice>
+              <div class="quablock">
+                <label class="btn btn-success quachoice" ng-disabled="!enh" ng-model="enh" btn-radio="'Good'" uncheckable value="1">Good</label>
+                <label class="btn btn-success quachoice" ng-disabled="!enh" ng-model="enh" btn-radio="'Excellent'" uncheckable value="2">Excellent</label>
+                <label class="btn btn-success quachoice" ng-disabled="!enh" ng-model="enh" btn-radio="'Perfect'" uncheckable value="3">Perfect</label>
+              </div>
             </div>
             <div class="col-md-6 compselecting" ng-class="{compselected: incr}">
               <div class="col-md-12 compselecting comptitle" ng-click="incr = !incr;">Incrustation</div>
-              <quachoice is-disabled="!incr"></quachoice>
+              <div class="quablock">
+                <label class="btn btn-success quachoice" ng-disabled="!incr" ng-model="incr" btn-radio="'Good'" uncheckable value="1">Good</label>
+                <label class="btn btn-success quachoice" ng-disabled="!incr" ng-model="incr" btn-radio="'Excellent'" uncheckable value="2">Excellent</label>
+                <label class="btn btn-success quachoice" ng-disabled="!incr" ng-model="incr" btn-radio="'Perfect'" uncheckable value="3">Perfect</label>
+              </div>
             </div>            
           </div>
           <div class="nextbtn footersignup">
             <button class="btn btn-lg" ng-click="prevStep()">
-              <-Account informations
+              &#8672; Account informations
             </button>    
             <button class="btn btn-lg" ng-click="nextStep('QQ Explanation')">
-              QQ Explanation->
+              QQ Explanation &#8674;
             </button>
           </div>
         </div>
@@ -178,10 +202,10 @@
           </div>
           <div class="nextbtn footersignup">
             <button class="btn btn-lg" ng-click="prevStep()">
-              <-Generic Modifications
+              &#8672; Generic Modifications
             </button>    
             <button class="btn btn-lg" ng-click="nextStep('Specific Skills')">
-              Specific Skills->
+              Specific Skills &#8674;
             </button>
           </div>
         </div>
@@ -212,10 +236,10 @@
           </div>
           <div class="nextbtn footersignup" >
             <button class="btn btn-lg" ng-click="prevStep()">
-              <-QQ Explanation
+              &#8672; QQ Explanation
             </button>            
             <button class="btn btn-lg" ng-click="nextStep('Skill Validation')">
-              Skill Validation->
+              Skill Validation &#8674;
             </button>
           </div>
         </div>
