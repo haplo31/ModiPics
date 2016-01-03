@@ -82,7 +82,7 @@
           </div>
           <br/>
           <div class="nextbtn footersignup">
-            <button class="btn btn-lg" ng-click="nextStep('Generic Skills')">
+            <button type="button" class="btn btn-lg" ng-click="nextStep('Generic Skills')">
               Generic Skills &#8674;
             </button>
           </div>
@@ -143,10 +143,10 @@
             </div>            
           </div>
           <div class="nextbtn footersignup">
-            <button class="btn btn-lg" ng-click="prevStep()">
+            <button type="button" class="btn btn-lg" ng-click="prevStep()">
               &#8672; Account informations
             </button>    
-            <button class="btn btn-lg" ng-click="nextStep('QQ Explanation')">
+            <button type="button" class="btn btn-lg" ng-click="nextStep('QQ Explanation')">
               QQ Explanation &#8674;
             </button>
           </div>
@@ -195,16 +195,16 @@
           </table>
           <a href="/fullpricing" class="completepricing">View full list of pricing</a>
           <div class="checkbox checkbox-success">
-            <input id="checkbox" class="styled" type="checkbox">
+            <input id="checkbox" class="styled" type="checkbox" ng-model="QQAutoLogin">
             <label for="checkbox">
               Join QQ System on login ?
             </label>
           </div>
           <div class="nextbtn footersignup">
-            <button class="btn btn-lg" ng-click="prevStep()">
+            <button type="button" class="btn btn-lg" ng-click="prevStep()">
               &#8672; Generic Modifications
             </button>    
-            <button class="btn btn-lg" ng-click="nextStep('Specific Skills')">
+            <button type="button" class="btn btn-lg" ng-click="nextStep('Specific Skills')">
               Specific Skills &#8674;
             </button>
           </div>
@@ -214,31 +214,31 @@
           <span class="explan">If you have other skills you want to share, set them here!</span>
           <span class="explan2"> or you can set them later on your profile...</span>
           <div class="specskill">
-            <button class="btn btn-success btn-primary" ng-click="addSkill()">Add new skill</button>
+            <button type="button" class="btn btn-success btn-primary" ng-click="addSkill()">Add new skill</button>
             <div class="col-md-12 skill" ng-repeat="(key, value) in skills">
               <span id='close' ng-click='remSkill(key)'>x</span>
               <div class="col-md-9">
                 <div class="col-md-12 skillattr" tooltip="Chose a descriptive name to help user find your skill." tooltip-placement="top" tooltip-trigger="mouseenter">
-                  Name your skill : <input type="text" value="{{value.name}}">
+                  Name your skill : <input type="text" ng-model="value.name" value="{{value.name}}">
                 </div>
                 <div class="col-md-12 skillattr" tooltip="What are the words who describe your skill." tooltip-placement="top" tooltip-trigger="mouseenter">
-                  Set its tags : <input type="text" value="{{value.tags}}">
+                  Set its tags : <input type="text" ng-model="value.tags" value="{{value.tags}}">
                 </div>
                 <div class="col-md-12 skillattr" tooltip="Your fee for this skill." tooltip-placement="top" tooltip-trigger="mouseenter">
-                  Price Range : <input type="text" value="{{value.price}}">
+                  Price Range : <input type="text" ng-model="value.price" value="{{value.price}}">
                 </div>
               </div>
               <div class="col-md-3">
-                <img class="skillimg" ng-src="/assets/images/white.png">
-                <button class="btn btn-success btn-primary">Add an example</button>
+                <img class="skillimg" ngf-thumbnail="value.file || '/assets/images/white.png'">
+                <button class="btn btn-success btn-primary" type="file" ngf-select="uploadFiles(key, $file, $invalidFiles)" ngf-max-size="20MB" accept="image/*">Add an example</button>
               </div>
             </div>
           </div>
           <div class="nextbtn footersignup" >
-            <button class="btn btn-lg" ng-click="prevStep()">
+            <button type="button" class="btn btn-lg" ng-click="prevStep()">
               &#8672; QQ Explanation
             </button>            
-            <button class="btn btn-lg" ng-click="nextStep('Skill Validation')">
+            <button type="button" class="btn btn-lg" ng-click="nextStep('Skill Validation')">
               Skill Validation &#8674;
             </button>
           </div>
