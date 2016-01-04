@@ -10,6 +10,8 @@ var path = require('path');
 module.exports = function(app) {
 
   // Insert routes below
+  app.use('/api/qqdesigners', require('./api/qqdesigner'));
+  app.use('/api/qqueries', require('./api/qquery'));
   app.use('/api/ssksamples', require('./api/ssksample'));
 
 

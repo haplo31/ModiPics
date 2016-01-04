@@ -253,21 +253,36 @@ img.modalImg{
     width: 25%;
 }
 .actiongrid{
-    width: 100%;
-    height: 100%;
-    min-height: 50vh;
+    min-height: 70vh;
+    display: block;
+    text-align: center;
+    margin-top: 0.5%;
+    color: #009688;
 }
 .dashboard{
     position:relative;
     padding-left: 0px;
-    margin-top: 40px;
-    width: 100%;
+    margin-top: 10px;
+    height:100%;
+    text-align: center;
+    border-radius: 50%;
+}
+.dashboardspec{
+    position:relative;
+    padding-left: 0px;
+    margin-top: 22.5%;
     height:100%;
     text-align: center;
 }
+.spec{
+    line-height: 100%;
+    vertical-align: 100%;
+}
+.generic{
+
+}
 .buttonimages{
     position: relative;
-    width: 40%;
 }
 .buttontitles{
     cursor: pointer;
@@ -286,4 +301,5 @@ img.modalImg{
     color: white;
     line-height: 100%;
     text-shadow: 2px 0 0 #000, 0 -1px 0 #000, 0 1px 0 #000, -1px 0 0 #000;
+    display: block;
 }

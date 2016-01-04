@@ -49,7 +49,6 @@ app.route('/upload')
       file.pipe(stream);
       stream.on('close', function () {
         console.log('File ' + filename + ' is uploaded');
-
 		lwip.open(__dirname +'/uploads/'+filename, function(err, image){
 		  // check err...
 		  // define a batch of manipulations and save to disk as JPEG:
@@ -70,7 +69,6 @@ app.route('/upload')
 		    });
 		  }
 		});
-
         res.json({
           filename: filename
         });
@@ -95,6 +93,13 @@ app.route('/uploadssk')
 server.listen(config.port, config.ip, function () {
   console.log('Express server listening on %d, in %s mode', config.port, app.get('env'));
 });
-
+var User = require('./api/user/user.model');
+User.find({} , '-salt -hashedPassword',function (err, users) {
+    console.log(users)
+  })
+var Qquery = require('./api/qquery/qquery.model');
+Qquery.find(function (err, users) {
+    console.log(users)
+  });
 // Expose app
 exports = module.exports = app;

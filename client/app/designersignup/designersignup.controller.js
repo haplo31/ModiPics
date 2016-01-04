@@ -47,8 +47,8 @@ angular.module('modiPicsApp')
           sskills: $scope.skills
         })
         .then( function() {
-          // Account created, redirect to home
-          $location.path('/');
+          // Account created, redirect to designer home
+          $location.path('/designer');
         })
         .catch( function(err) {
           err = err.data;

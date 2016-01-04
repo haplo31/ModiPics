@@ -86,7 +86,8 @@
 					<span class="pricingvalue">{{estimatedPrice}}</span>
   			</div>
   			<div>
-  				 <button class="btn-xl btn btn-primary finalize">Finalize</button>
+  				<uib-alert template-url="alert.html" ng-hide="isLoggedIn()">You need to be logged !</uib-alert>
+  				<button class="btn-xl btn btn-primary finalize" ng-click="submitRequest()">Finalize</button>
   			</div>
 		</div>
 	</div>
