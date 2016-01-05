@@ -2,7 +2,7 @@
 
 var _ = require('lodash');
 var Qquery = require('./qquery.model');
-
+var main=require('./../../app.js')
 // Get list of qquerys
 exports.index = function(req, res) {
   Qquery.find(function (err, qquerys) {
@@ -23,6 +23,7 @@ exports.show = function(req, res) {
 // Creates a new qquery in the DB.
 exports.create = function(req, res) {
   Qquery.create(req.body, function(err, qquery) {
+    main.qqueryAffect();
     if(err) { return handleError(res, err); }
     return res.status(201).json(qquery);
   });

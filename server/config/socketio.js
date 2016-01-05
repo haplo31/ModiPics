@@ -5,7 +5,7 @@
 'use strict';
 
 var config = require('./environment');
-
+var main = require('./../app.js')
 // When the user disconnects.. perform this
 function onDisconnect(socket) {
 }
@@ -42,6 +42,11 @@ module.exports = function (socketio) {
   // }));
 
   socketio.on('connection', function (socket) {
+    socket.on('add-qqdesigner', function(data){
+      console.log("socket")
+      main.qqDesignerList[data.username] = socket;
+
+    });
     socket.address = socket.handshake.address !== null ?
             socket.handshake.address.address + ':' + socket.handshake.address.port :
             process.env.DOMAIN;

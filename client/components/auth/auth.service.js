@@ -47,6 +47,7 @@ angular.module('modiPicsApp')
       logout: function() {
         $cookieStore.remove('token');
         currentUser = {};
+        $rootScope.qqQuit();
       },
 
       /**

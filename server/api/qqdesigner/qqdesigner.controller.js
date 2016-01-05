@@ -2,7 +2,7 @@
 
 var _ = require('lodash');
 var Qqdesigner = require('./qqdesigner.model');
-
+var main=require('./../../app.js')
 // Get list of qqdesigners
 exports.index = function(req, res) {
   Qqdesigner.find(function (err, qqdesigners) {
@@ -23,6 +23,7 @@ exports.show = function(req, res) {
 // Creates a new qqdesigner in the DB.
 exports.create = function(req, res) {
   Qqdesigner.create(req.body, function(err, qqdesigner) {
+    main.qqueryAffect();
     if(err) { return handleError(res, err); }
     return res.status(201).json(qqdesigner);
   });
