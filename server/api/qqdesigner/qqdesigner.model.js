@@ -6,7 +6,8 @@ var mongoose = require('mongoose'),
 var QqdesignerSchema = new Schema({
   name: String,
   gskills: {},
-  date:String
+  date:String,
+  socket: String
 });
 
 module.exports = mongoose.model('Qqdesigner', QqdesignerSchema);

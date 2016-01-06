@@ -1,19 +1,26 @@
 'use strict';
 
 angular.module('modiPicsApp')
-  .controller('LoginCtrl', function ($scope, Auth, $location, $window) {
+  .controller('LoginCtrl', function ($scope, Auth, $location, $window,socket) {
     $scope.user = {};
     $scope.errors = {};
 
     $scope.login = function(form) {
       $scope.submitted = true;
-
       if(form.$valid) {
         Auth.login({
           email: $scope.user.email,
           password: $scope.user.password
         })
         .then( function() {
+          Auth.isLoggedInAsync(function(result){
+            if (result){
+              if (Auth.getCurrentUser().qqautolog){
+                console.log("autolog")
+                socket.emit("qqdesigner",{name:Auth.getCurrentUser().name,gskills:Auth.getCurrentUser().gskills,date:new Date().getTime()})
+              }
+            }
+          })
           // Logged in, redirect to home
           $location.path('/');
         })

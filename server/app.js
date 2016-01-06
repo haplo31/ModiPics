@@ -93,20 +93,16 @@ app.route('/uploadssk')
 server.listen(config.port, config.ip, function () {
   console.log('Express server listening on %d, in %s mode', config.port, app.get('env'));
 });
-// var Qquery = require('./api/qquery/qquery.model');
-// Qquery.find(function (err, users) {
-//     console.log(users)
-// });
+
 var Qquery = require('./api/qquery/qquery.model');
 var Qqdesigner = require('./api/qqdesigner/qqdesigner.model');
-var qqDesignerList = [];
 exports.qqueryAffect = function(){
-  Qquery.find(function (err, qquerys) {
-    for (var i = 0; i < qquerys.length; i++) {
-      console.log(qquerys[i].modtype,qquerys[i].quality)
-      var mod='gksills.'+qquerys[i].modtype
-      Qqdesigner.find({mod: qquerys[i].quality}).sort({ date : 'asc'}).limit(1).exec(function (err, designer) {
-        console.log(designer)
+  Qquery.find(function (err, qqueries) {
+    for (var i = 0; i < qqueries.length; i++) {
+      var mod='gskills.'+qqueries[i].modtype+''
+      var qquery=qqueries[i];
+      Qqdesigner.find().where(mod).equals(qqueries[i].quality).sort({ date : 'asc'}).limit(0).exec(function (err, designer) {
+        socketio.sockets.to(designer[0].socket).emit('qqprop', qquery);
       });
     };
   });

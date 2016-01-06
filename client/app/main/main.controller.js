@@ -1,29 +1,17 @@
 'use strict';
 
 angular.module('modiPicsApp')
-  .controller('MainCtrl', function ($scope, $rootScope, Auth, $http, socket,$timeout,$modal,$location) {
-    var qqId;
-    if (Auth.getCurrentUser().type === "designer"){ 
-      console.log(Auth.getCurrentUser().qqautolog)  
-      if (Auth.getCurrentUser().qqautolog){
-        console.log("post")
-        socket.emit('add-qqdesigner',Auth.getCurrentUser().name); 
-        $http.post('/api/qqdesigners/',{name:Auth.getCurrentUser().name,gskills:Auth.getCurrentUser().gskills,date:new Date().getTime()}).success(function(resp){
-          console.log(resp)
-          qqId=resp._id;
-           console.log(qqId)
-        })
-      }
-      $location.path('/designer');
-    }
+  .controller('MainCtrl', function ($scope, $rootScope, Auth, $http, $timeout,$modal,$location,socket) {
+     socket.on('qqprop', function (data) {
+      console.log(data)
+    });
+     $scope.$on('$destroy', function (event) {
+    socket.removeAllListeners();
+});
     $scope.homeVisible=true;
     $scope.catVisible=false;
     $scope.mozaic=true;
     $scope.dashboard=false;
-    $rootScope.qqQuit = function(){
-      console.log("qqquit")
-      $http.delete('/api/qqdesigners/'+ qqId)
-    }
     $scope.resetHome = function() {
       $scope.homeVisible=true;
       $scope.catVisible=false;

@@ -2,7 +2,7 @@
 'use strict';
 
 angular.module('modiPicsApp')
-  .factory('socket', function(socketFactory) {
+  .factory('socket', function(socketFactory,$rootScope) {
 
     // socket.io now auto-configures its connection when we ommit a connection url
     var ioSocket = io('', {
@@ -17,7 +17,6 @@ angular.module('modiPicsApp')
 
     return {
       socket: socket,
-
       /**
        * Register listeners to sync an array with updates on a model
        *
@@ -28,6 +27,20 @@ angular.module('modiPicsApp')
        * @param {Array} array
        * @param {Function} cb
        */
+      on: function (eventName, callback) {
+        socket.on(eventName, function () {  
+          var args = arguments;
+          $rootScope.$apply(function () {
+            callback.apply(socket, args);
+          });
+        });
+      },
+      removeAllListeners: function(){
+        socket.removeAllListeners();
+      },
+      emit: function(msg,param){
+        socket.emit(msg,param)
+      },
       syncUpdates: function (modelName, array, cb) {
         cb = cb || angular.noop;
 

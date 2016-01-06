@@ -40,12 +40,24 @@ module.exports = function (socketio) {
   //   secret: config.secrets.session,
   //   handshake: true
   // }));
-
+  var Qqdesigner = require('./../api/qqdesigner/qqdesigner.model');
   socketio.on('connection', function (socket) {
-    socket.on('add-qqdesigner', function(data){
-      console.log("socket")
-      main.qqDesignerList[data.username] = socket;
-
+    socket.on('qqdesigner', function(data){
+      data.socket=socket.id
+      Qqdesigner.find({name:data.name},function(err,designer){
+        if (designer.length){
+          console.log("Already in QQ")
+        }
+        else{
+          Qqdesigner.create(data, function(err, qqdesigner) {
+            main.qqueryAffect();
+          });
+        }
+      })
+    });
+    socket.on('qqdesignerdel', function(){
+      console.log("del")
+      Qqdesigner.findOneAndRemove({socket:socket.id},function(err){})
     });
     socket.address = socket.handshake.address !== null ?
             socket.handshake.address.address + ':' + socket.handshake.address.port :
@@ -55,6 +67,8 @@ module.exports = function (socketio) {
 
     // Call onDisconnect.
     socket.on('disconnect', function () {
+      console.log(socket.id)
+
       onDisconnect(socket);
       console.info('[%s] DISCONNECTED', socket.address);
     });

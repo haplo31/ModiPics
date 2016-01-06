@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('modiPicsApp')
-  .factory('Auth', function Auth($location, $rootScope, $http, User, $cookieStore, $q) {
+  .factory('Auth', function Auth($location, $rootScope, $http, User, $cookieStore, $q,socket) {
     var currentUser = {};
     if($cookieStore.get('token')) {
       currentUser = User.get();
@@ -47,7 +47,7 @@ angular.module('modiPicsApp')
       logout: function() {
         $cookieStore.remove('token');
         currentUser = {};
-        $rootScope.qqQuit();
+        socket.emit("qqdesignerdel")
       },
 
       /**
