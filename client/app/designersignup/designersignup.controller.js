@@ -38,12 +38,12 @@ angular.module('modiPicsApp')
           password: $scope.user.password,
           type: "designer",
           qqautolog: $scope.QQAutoLogin,
-          gskills: {addPers: $scope.addpers || '0',
-                    remPers: $scope.rempers || '0',
-                    addObj: $scope.addobj || '0',
-                    remObj: $scope.addobj || '0',
-                    enh: $scope.enh || '0',
-                    incr: $scope.incr || '0'},
+          gskills: {addPers: {value: $scope.addpers || '0', rating:0},
+                    remPers: {value: $scope.rempers || '0', rating:0},
+                    addObj: {value: $scope.addobj || '0', rating:0},
+                    remObj: {value: $scope.addobj || '0', rating:0},
+                    enh: {value: $scope.enh || '0', rating:0},
+                    incr: {value: $scope.incr || '0', rating:0}},
           sskills: $scope.skills
         })
         .then( function() {

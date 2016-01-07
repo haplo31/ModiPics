@@ -97,12 +97,30 @@ server.listen(config.port, config.ip, function () {
 var Qquery = require('./api/qquery/qquery.model');
 var Qqdesigner = require('./api/qqdesigner/qqdesigner.model');
 exports.qqueryAffect = function(){
-  Qquery.find(function (err, qqueries) {
+  Qquery.find()/*.where('available').equals(true)*/.exec(function (err, qqueries) {
     for (var i = 0; i < qqueries.length; i++) {
-      var mod='gskills.'+qqueries[i].modtype+''
+      var modvalue='gskills.'+qqueries[i].modtype+'.value'
+      var modrating='gskills.'+qqueries[i].modtype+'.rating'
       var qquery=qqueries[i];
-      Qqdesigner.find().where(mod).equals(qqueries[i].quality).sort({ date : 'asc'}).limit(0).exec(function (err, designer) {
-        socketio.sockets.to(designer[0].socket).emit('qqprop', qquery);
+      console.log(qqueries[i].rating)
+      console.log(typeof qqueries[i].rating[0])
+      Qqdesigner.find().where(modvalue).equals(qqueries[i].quality).where(modrating).gte(qqueries[i].rating[0]).sort({ date : 'asc'}).limit(1).exec(function (err, designer) {
+        if (designer.length>0){
+          var data={};
+          if (designer[0].gskills[qquery.modtype].rating > qquery.rating[qquery.rating.length-1]){
+            data.rating=qquery.rating[qquery.rating.length-1]
+          }
+          else{
+            data.rating=designer[0].gskills[qquery.modtype].rating
+          }
+          data.designer=designer;
+          data.qquery = qquery;
+
+          console.log(data)
+          socketio.sockets.to(designer[0].socket).emit('qqprop', data);
+            // qquery.available=false;
+            // qquery.save()
+        }
       });
     };
   });

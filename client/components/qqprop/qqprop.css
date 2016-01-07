@@ -1,0 +1,54 @@
+.titleretouch{
+	font-family: 'Bitter',serif;
+    font-size: 200%;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: bold;
+    color: white;
+    margin-bottom: 0.5%;
+    padding-bottom: 0.5%;
+    line-height: 70%;
+    text-shadow: 2px 0 0 #000, 0 -1px 0 #000, 0 1px 0 #000, -1px 0 0 #000;
+}
+.modtype{
+    display: block;
+    font-family: 'Bitter',serif;
+    font-size: 150%;
+    font-weight: bold;
+    color: red;
+}
+.picturezone{
+    text-align: center;
+    border: 4px #00796B solid;
+    margin-bottom: 10px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 100%;
+    min-width: 40%;
+    max-height: 50%;
+    min-height: 20%;
+    position: relative;
+}
+.dragbtn{
+    position: absolute;
+}
+.legend{
+    background-color: #5cb85c;
+    width: 50%;
+    margin-left: 25%;
+    padding-bottom: 2%;
+}
+.qua{
+    font-family: 'Original Surfer', cursive;
+    font-size: 200%;
+    color: white;
+    line-height: 100%;
+    display: block;
+}
+.imgmod{
+    position: relative;
+}
+.starimg{
+
+}

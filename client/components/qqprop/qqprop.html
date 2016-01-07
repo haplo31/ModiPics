@@ -1,0 +1,30 @@
+<div class="modal-complete">
+	<div class="modal-header">
+		<h2 class="titleretouch">A QQ request corresponding your profile has been found ! </h2>
+	</div>
+	<div class="modal-body">
+		<span class="modtype">{{modtype}}</span>
+		{{request}}
+		<div class="imgmod">
+			<img class="picturezone" id="picturezone" ng-src="/public/{{request.src}}" ng-style="{'width':request.modinfos[0].width, 'height': request.modinfos[0].height}">
+			<div class="placedbuttons" ng-repeat='(index,btn) in request.modinfos'>
+					<img  id="{{ 'btn' + (index+1) }}" class="dragbtn noselect" ng-src="/assets/images/red_round_button.png" ng-style="{'left':btn.posLeft, 'top': btn.posTop}" >
+			</div> 
+		</div>
+		<div class="col-md-12">
+			<div class="legend col-md-6">
+				<img  class="starimg col-centered" ng-src="{{ratingsrc}}">
+				<span class="qua col-centered" uncheckable>{{request.quality}}</span>
+			</div>
+			<div class="legend col-md-6">
+				<span class="col-centered" uncheckable>{{calcprice}}</span>
+			</div>						
+		</div>
+
+		
+		<div class="modalInfos">
+		</div>
+	</div>
+	<div class="modal-footer">
+	</div>
+</div>

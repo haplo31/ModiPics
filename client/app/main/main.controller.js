@@ -3,11 +3,31 @@
 angular.module('modiPicsApp')
   .controller('MainCtrl', function ($scope, $rootScope, Auth, $http, $timeout,$modal,$location,socket) {
      socket.on('qqprop', function (data) {
-      console.log(data)
+      var modalQQProp = $modal.open({
+          animation: true,
+          templateUrl: '../../components/qqprop/qqprop.html',
+          controller: 'QqpropCtrl',
+          size: "lg",
+          resolve: {
+            item: function () {
+              return data.qquery;
+            },
+            designer: function (){
+              return data.designer
+            },
+            rating: function(){
+              return data.rating
+            }
+          }
+        });
+        modalQQProp.result.then(function (selectedItem) {
+          $scope.selected = selectedItem;
+        }, function () {
+        });
     });
-     $scope.$on('$destroy', function (event) {
-    socket.removeAllListeners();
-});
+    $scope.$on('$destroy', function (event) {
+      socket.removeAllListeners();
+    });
     $scope.homeVisible=true;
     $scope.catVisible=false;
     $scope.mozaic=true;
@@ -45,7 +65,6 @@ angular.module('modiPicsApp')
 
     }
     $scope.modalPic = function(item) {
-      console.log(item.src)
       var modalInstance = $modal.open({
         animation: true,
         templateUrl: '../../components/modal/modal.html',
@@ -291,16 +310,16 @@ angular.module('modiPicsApp')
       }
       var ratingSelected = []
       if ($scope.noratingSelected){
-        ratingSelected.push("norating")
+        ratingSelected.push(0)
       }
       if ($scope.bronzeratingSelected){
-        ratingSelected.push("bronze")
+        ratingSelected.push(1)
       }
       if ($scope.silverratingSelected){
-        ratingSelected.push("silver")
+        ratingSelected.push(2)
       }
       if ($scope.goldratingSelected){
-        ratingSelected.push("gold")
+        ratingSelected.push(3)
       }
       Upload.upload({
           url: 'upload',
