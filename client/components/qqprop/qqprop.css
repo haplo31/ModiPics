@@ -15,12 +15,11 @@
     font-family: 'Bitter',serif;
     font-size: 150%;
     font-weight: bold;
-    color: red;
+    color: #E040FB;
 }
 .picturezone{
     text-align: center;
     border: 4px #00796B solid;
-    margin-bottom: 10px;
     display: block;
     margin-left: auto;
     margin-right: auto;
@@ -33,22 +32,48 @@
 .dragbtn{
     position: absolute;
 }
-.legend{
+.infos{
     background-color: #5cb85c;
-    width: 50%;
-    margin-left: 25%;
-    padding-bottom: 2%;
+}
+
+.imgdec{
+    width: 80%;
+    margin-left: 10%;
+    border: 6px #00796B dashed;
+    background-color: #5cb85c;
+}
+.starimg{
+    background-color: #5cb85c; 
+    width: 22%;
 }
 .qua{
+    width: 80%;
+    margin-left: 10%;
+    border: 6px #00796B dashed;
+    background-color: #5cb85c;
     font-family: 'Original Surfer', cursive;
-    font-size: 200%;
+    font-size: 450%;
     color: white;
     line-height: 100%;
+    margin-top: 1%;
     display: block;
+    padding-bottom: 2%;
+    padding-top: 2%;
+
+}
+.price{
+    margin-top: 1%;
+    width: 80%;
+    margin-left: 10%;
+    border: 6px #00796B solid;
+    background-color: #5cb85c;
+    font-family: 'Original Surfer', cursive;
+    font-size: 800%;
+    line-height: 100%;
+    color: white;
+    display: block;
+    margin-bottom: 2%;
 }
 .imgmod{
     position: relative;
-}
-.starimg{
-
 }

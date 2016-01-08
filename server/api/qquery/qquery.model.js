@@ -13,6 +13,7 @@ var QquerySchema = new Schema({
 	addinfos: String,
 	quality: String,
 	rating: [],
+	price:[],
 	available: Boolean
 });
 

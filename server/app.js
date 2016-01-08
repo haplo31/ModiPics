@@ -89,6 +89,11 @@ app.route('/uploadssk')
       });
     });
   });
+  var tabprices={remPers:{baseprice:10,modprice:0.2,quaprice: [0,0.2,0.4],ratprice: [0.15,0.25,0.40]}}
+  app.route('/getprice/:modtype')
+  .get(function (req, res) {
+    return res.status(200).json(tabprices[req.params.modtype]);
+  });
 // Start server
 server.listen(config.port, config.ip, function () {
   console.log('Express server listening on %d, in %s mode', config.port, app.get('env'));
@@ -102,8 +107,6 @@ exports.qqueryAffect = function(){
       var modvalue='gskills.'+qqueries[i].modtype+'.value'
       var modrating='gskills.'+qqueries[i].modtype+'.rating'
       var qquery=qqueries[i];
-      console.log(qqueries[i].rating)
-      console.log(typeof qqueries[i].rating[0])
       Qqdesigner.find().where(modvalue).equals(qqueries[i].quality).where(modrating).gte(qqueries[i].rating[0]).sort({ date : 'asc'}).limit(1).exec(function (err, designer) {
         if (designer.length>0){
           var data={};

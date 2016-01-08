@@ -4,7 +4,6 @@
 	</div>
 	<div class="modal-body">
 		<span class="modtype">{{modtype}}</span>
-		{{request}}
 		<div class="imgmod">
 			<img class="picturezone" id="picturezone" ng-src="/public/{{request.src}}" ng-style="{'width':request.modinfos[0].width, 'height': request.modinfos[0].height}">
 			<div class="placedbuttons" ng-repeat='(index,btn) in request.modinfos'>
@@ -12,13 +11,9 @@
 			</div> 
 		</div>
 		<div class="col-md-12">
-			<div class="legend col-md-6">
-				<img  class="starimg col-centered" ng-src="{{ratingsrc}}">
-				<span class="qua col-centered" uncheckable>{{request.quality}}</span>
-			</div>
-			<div class="legend col-md-6">
-				<span class="col-centered" uncheckable>{{calcprice}}</span>
-			</div>						
+			<div class="imgdec"><img  class="starimg col-centered" ng-src="{{ratingsrc}}"></div>
+			<span class="qua col-centered" uncheckable>{{request.quality}}</span>
+			<span class="price col-centered" uncheckable>{{price}}€</span>					
 		</div>
 
 		
@@ -26,5 +21,7 @@
 		</div>
 	</div>
 	<div class="modal-footer">
+		<button class="btn btn-xl btn-success">Accept request</button>
+		<button class="btn btn-xl btn-danger">Decline request</button>
 	</div>
 </div>

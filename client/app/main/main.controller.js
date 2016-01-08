@@ -218,27 +218,39 @@ angular.module('modiPicsApp')
   });
   $scope.noratingSelected=true;
   $scope.bronzeratingSelected=true;
+  var basePrice;
+  var modPrice;
+  var quaPrice=[];
+  var ratPrice=[];
+  $http.get('/getprice/remPers').success(function(price) {
+      basePrice=price.baseprice;
+      modPrice=price.modprice;
+      quaPrice=price.quaprice;
+      ratPrice=price.ratprice;
+
+    });   
+  var finalPrices = [];                         
   $scope.estimatePrice=function(){
-    var calculatedPrice= 10;
-    var finalPrices = [];
-    calculatedPrice += (calculatedPrice*0.2)*($scope.btnPlaced.length-1)
+    var tempPrice=basePrice;
+    finalPrices = [];
+    tempPrice += (tempPrice*modPrice)*($scope.btnPlaced.length-1)
     if ($scope.radioModel==="Excellent"){
-      calculatedPrice += (calculatedPrice*0.2)
+      tempPrice += (tempPrice*quaPrice[1])
     }
     else if ($scope.radioModel==="Perfect"){
-      calculatedPrice += (calculatedPrice*0.4)
+      tempPrice += (tempPrice*quaPrice[2])
     }
     if ($scope.noratingSelected){
-      finalPrices.push(parseInt(calculatedPrice,10));
+      finalPrices.push(parseInt(tempPrice,10));
     }
     if ($scope.bronzeratingSelected){
-      finalPrices.push(parseInt(calculatedPrice + (calculatedPrice*0.15),10))
+      finalPrices.push(parseInt(tempPrice + (tempPrice*ratPrice[0]),10))
     }
     if ($scope.silverratingSelected){
-      finalPrices.push(parseInt(calculatedPrice + (calculatedPrice*0.25),10))
+      finalPrices.push(parseInt(tempPrice + (tempPrice*ratPrice[1]),10))
     }
     if ($scope.goldratingSelected){
-      finalPrices.push(parseInt(calculatedPrice + (calculatedPrice*0.40),10))
+      finalPrices.push(parseInt(tempPrice + (tempPrice*ratPrice[2]),10))
     }
     if (finalPrices.length>1){
       $scope.estimatedPrice= finalPrices[0]+"-"+finalPrices[finalPrices.length-1]+"€"
@@ -326,7 +338,19 @@ angular.module('modiPicsApp')
           data: {file:Upload.rename($scope.file,picSrc)}
       }).then(function (resp) {
           console.log('Success ' + resp.config.data.file.name + 'uploaded. Response: ' + resp.data);
-          $http.post('/api/qqueries/',{owner:Auth.getCurrentUser().name,artist:"",modtype:"remPers",vote:0,src:picSrc,modinfos:$scope.btnPlaced,addinfos:$scope.addInfos,quality:$scope.radioModel,rating:ratingSelected,available:"true"}).success(function(){
+          $http.post('/api/qqueries/',{ owner:Auth.getCurrentUser().name,
+                                        artist:"",
+                                        modtype:"remPers",
+                                        vote:0,
+                                        src:picSrc,
+                                        modinfos:$scope.btnPlaced,
+                                        addinfos:$scope.addInfos,
+                                        quality:$scope.radioModel,
+                                        rating:ratingSelected,
+                                        price: finalPrices,
+                                        available:"true"}).success(function(){
+          }).success(function(){
+            $modalInstance.close();
           });      
       }, function (resp) {
           console.log('Error status: ' + resp.status);

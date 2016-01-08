@@ -29,4 +29,5 @@ angular.module('modiPicsApp')
 		$scope.ratingsrc="/assets/images/starGold.png";
 		break;
    	}
+   	$scope.price=item.price[rating]
   });
