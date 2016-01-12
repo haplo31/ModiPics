@@ -9,6 +9,7 @@ process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 
 var express = require('express');
 var mongoose = require('mongoose');
+var async=require('async')
 var config = require('./config/environment');
 
 // Connect to database
@@ -103,31 +104,25 @@ var Qquery = require('./api/qquery/qquery.model');
 var Qqdesigner = require('./api/qqdesigner/qqdesigner.model');
 exports.qqueryAffect = function(){
   Qquery.find()/*.where('available').equals(true)*/.exec(function (err, qqueries) {
-    for (var i = 0; i < qqueries.length; i++) {
-      var modvalue='gskills.'+qqueries[i].modtype+'.value'
-      var modrating='gskills.'+qqueries[i].modtype+'.rating'
-      var qquery=qqueries[i];
-      console.log(typeof qqueries[i].rating[0])
-      console.log(modrating)
-      // Where doesn't work, find why !!!!
-      Qqdesigner.find().where(modvalue).equals(qqueries[i].quality).where(modrating).gte(qqueries[i].rating[0]).sort({ date : 'asc'}).limit(1).exec(function (err, designer) {
+    async.each(qqueries, function(qquery,callback){
+      var modvalue='gskills.'+qquery.modtype+'.value'
+      var modrating='gskills.'+qquery.modtype+'.rating'
+      Qqdesigner.find().where(modvalue).equals(qqueries[i].quality).where(modrating).in(qquery.rating).sort({ date : 'asc'}).limit(1).exec(function (err, designer) {
         if (designer.length>0){
           var data={};
-          if (designer[0].gskills[qquery.modtype].rating > qquery.rating[qquery.rating.length-1]){
-            data.rating=qquery.rating[qquery.rating.length-1]
-          }
-          else{
-            data.rating=designer[0].gskills[qquery.modtype].rating
-          }
+          data.rating=designer[0].gskills[qquery.modtype].rating
           data.designer=designer;
           data.qquery = qquery;
-
-          console.log(data)
           socketio.sockets.to(designer[0].socket).emit('qqprop', data);
             // qquery.available=false;
             // qquery.save()
         }
-      });
+      });      
+    }, function(err){
+    // if any of the saves produced an error, err would equal that error
+    });
+    for (var i = 0; i < qqueries.length; i++) {
+
     };
   });
 }
