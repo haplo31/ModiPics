@@ -51,7 +51,7 @@ Qquery.find({}).remove(function() {
   price : [18],
   rating : [2],
   modinfos : [{height: 447,width: 798,posLeft: 335,posTop: 165},
-              {height: 447,width: 798,posLeft: 629,posTop: 193}]
+              {height: 447,width: 798,posLeft: 635,posTop: 193}]
   },function() {
       console.log('finished populating qqueries');
     }
