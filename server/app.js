@@ -107,6 +107,9 @@ exports.qqueryAffect = function(){
       var modvalue='gskills.'+qqueries[i].modtype+'.value'
       var modrating='gskills.'+qqueries[i].modtype+'.rating'
       var qquery=qqueries[i];
+      console.log(typeof qqueries[i].rating[0])
+      console.log(modrating)
+      // Where doesn't work, find why !!!!
       Qqdesigner.find().where(modvalue).equals(qqueries[i].quality).where(modrating).gte(qqueries[i].rating[0]).sort({ date : 'asc'}).limit(1).exec(function (err, designer) {
         if (designer.length>0){
           var data={};

@@ -3,31 +3,59 @@
  * to disable, edit config/environment/index.js, and set `seedDB: false`
  */
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 'use strict';
 
 var Thing = require('../api/thing/thing.model');
 var User = require('../api/user/user.model');
+var Qquery=require('../api/qquery/qquery.model');
 
-Thing.find({}).remove(function() {
-  Thing.create({
-    name : 'Development Tools',
-    info : 'Integration with popular tools such as Bower, Grunt, Karma, Mocha, JSHint, Node Inspector, Livereload, Protractor, Jade, Stylus, Sass, CoffeeScript, and Less.'
-  }, {
-    name : 'Server and Client integration',
-    info : 'Built with a powerful and fun stack: MongoDB, Express, AngularJS, and Node.'
-  }, {
-    name : 'Smart Build System',
-    info : 'Build system ignores `spec` files, allowing you to keep tests alongside code. Automatic injection of scripts and styles into your index.html'
-  },  {
-    name : 'Modular Structure',
-    info : 'Best practice client and server structures allow for more code reusability and maximum scalability'
-  },  {
-    name : 'Optimized Build',
-    info : 'Build process packs up your templates as a single JavaScript payload, minifies your scripts/css/images, and rewrites asset names for caching.'
-  },{
-    name : 'Deployment Ready',
-    info : 'Easily deploy your app to Heroku or Openshift with the heroku and openshift subgenerators'
-  });
+Qquery.find({}).remove(function() {
+  Qquery.create({ 
+  owner : "Test User",
+  artist : "",
+  modtype : "remPers",
+  vote : 0,
+  src : "TestUser1452283833465.jpg",
+  quality : "Excellent",
+  available : true,
+  price : [14, 16, 18],
+  rating : [0, 1, 2],
+  modinfos : [{height: 447,width: 798,posLeft: 335,posTop: 165},
+              {height: 447,width: 798,posLeft: 629,posTop: 193}]
+  },
+  { 
+  owner : "Test User",
+  artist : "",
+  modtype : "remPers",
+  vote : 0,
+  src : "TestUser1452283833465.jpg",
+  quality : "Excellent",
+  available : true,
+  price : [18],
+  rating : [2],
+  modinfos : [{height: 447,width: 798,posLeft: 335,posTop: 165},
+              {height: 447,width: 798,posLeft: 629,posTop: 193}]
+  },function() {
+      console.log('finished populating qqueries');
+    }
+  );
 });
 
 User.find({}).remove(function() {
@@ -42,6 +70,44 @@ User.find({}).remove(function() {
     name: 'Admin',
     email: 'admin@admin.com',
     password: 'admin'
+  },{
+    provider: 'local',
+    name: 'Designer',
+    email: 'des@igner.com',
+    password: 'designer',
+    qqautolog: true,
+    gskills: { addPers: { value: '0', rating: 0 },
+          remPers: { value: 'Excellent', rating: 0 },
+          addObj: { value: '0', rating: 0 },
+          remObj: { value: '0', rating: 0 },
+          enh: { value: '0', rating: 0 },
+          incr: { value: '0', rating: 0 } },
+  },
+  {
+    provider: 'local',
+    name: 'DesignerBronze',
+    email: 'des@igner2.com',
+    password: 'designer',
+    qqautolog: true,
+    gskills: { addPers: { value: '0', rating: 0 },
+          remPers: { value: 'Excellent', rating: 1 },
+          addObj: { value: '0', rating: 0 },
+          remObj: { value: '0', rating: 0 },
+          enh: { value: '0', rating: 0 },
+          incr: { value: '0', rating: 0 } },
+  },
+  {
+    provider: 'local',
+    name: 'DesignerGold',
+    email: 'des@igner3.com',
+    password: 'designer',
+    qqautolog: true,
+    gskills: { addPers: { value: '0', rating: 0 },
+          remPers: { value: 'Excellent', rating: 3 },
+          addObj: { value: '0', rating: 0 },
+          remObj: { value: '0', rating: 0 },
+          enh: { value: '0', rating: 0 },
+          incr: { value: '0', rating: 0 } },
   }, function() {
       console.log('finished populating users');
     }
