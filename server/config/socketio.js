@@ -41,7 +41,9 @@ module.exports = function (socketio) {
   //   handshake: true
   // }));
   var Qqdesigner = require('./../api/qqdesigner/qqdesigner.model');
+  var User = require('./../api/user/user.model');
   socketio.on('connection', function (socket) {
+    console.log(socket)
     socket.on('qqdesigner', function(data){
       data.socket=socket.id
       Qqdesigner.find({name:data.name},function(err,designer){
@@ -53,6 +55,19 @@ module.exports = function (socketio) {
             main.qqueryAffect();
           });
         }
+      })
+    });
+    socket.on('user', function(data){
+      data.socket=socket.id
+      User.findOne({name:data.name},function(err,user){
+        user.socket=data.socket;
+        user.save();
+      })
+    });
+    socket.on('userdel', function(data){
+      User.findOne({socket:socket.id},function(err,user){
+        user.socket="";
+        user.save();
       })
     });
     socket.on('qqdesignerdel', function(){

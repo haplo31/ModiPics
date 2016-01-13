@@ -19,7 +19,7 @@ angular.module('modiPicsApp')
       login: function(user, callback) {
         var cb = callback || angular.noop;
         var deferred = $q.defer();
-
+        console.log(user)
         $http.post('/auth/local', {
           email: user.email,
           password: user.password
@@ -48,6 +48,7 @@ angular.module('modiPicsApp')
         $cookieStore.remove('token');
         currentUser = {};
         socket.emit("qqdesignerdel")
+        socket.emit("userdel")
       },
 
       /**

@@ -19,6 +19,10 @@ angular.module('modiPicsApp')
                 console.log("autolog")
                 socket.emit("qqdesigner",{name:Auth.getCurrentUser().name,gskills:Auth.getCurrentUser().gskills,date:new Date().getTime()})
               }
+              if (/*(Auth.getCurrentUser().pending.length>0)&&*/(Auth.getCurrentUser().role === 'user')){
+                console.log("pending")
+                socket.emit("user",{name:Auth.getCurrentUser().name,socket:socket.id})
+              }
             }
           })
           // Logged in, redirect to home

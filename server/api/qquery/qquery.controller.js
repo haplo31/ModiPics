@@ -2,7 +2,8 @@
 
 var _ = require('lodash');
 var Qquery = require('./qquery.model');
-var main=require('./../../app.js')
+var User = require('./../user/user.model');
+var main=require('./../../app.js');
 // Get list of qquerys
 exports.index = function(req, res) {
   Qquery.find(function (err, qquerys) {
@@ -23,6 +24,12 @@ exports.show = function(req, res) {
 // Creates a new qquery in the DB.
 exports.create = function(req, res) {
   Qquery.create(req.body, function(err, qquery) {
+    console.log(qquery._id)
+    User.findOne({name: qquery.owner}).exec(function (err, user) {
+      console.log(user.pending)
+      user.pending.push(qquery._id);
+      user.save();
+    })
     main.qqueryAffect();
     if(err) { return handleError(res, err); }
     return res.status(201).json(qquery);

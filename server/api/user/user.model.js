@@ -23,6 +23,8 @@ var UserSchema = new Schema({
     type: String,
     default: 'user'
   },
+  pending:[],
+  socket:String,
   hashedPassword: String,
   provider: String,
   salt: String,

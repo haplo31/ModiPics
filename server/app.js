@@ -103,6 +103,7 @@ var Qquery = require('./api/qquery/qquery.model');
 var Qqdesigner = require('./api/qqdesigner/qqdesigner.model');
 exports.qqueryAffect = function(){
   Qquery.find()/*.where('available').equals(true)*/.exec(function (err, qqueries) {
+<<<<<<< Updated upstream
     for (var i = 0; i < qqueries.length; i++) {
       var modvalue='gskills.'+qqueries[i].modtype+'.value'
       var modrating='gskills.'+qqueries[i].modtype+'.rating'
@@ -111,6 +112,12 @@ exports.qqueryAffect = function(){
       console.log(modrating)
       // Where doesn't work, find why !!!!
       Qqdesigner.find().where(modvalue).equals(qqueries[i].quality).where(modrating).gte(qqueries[i].rating[0]).sort({ date : 'asc'}).limit(1).exec(function (err, designer) {
+=======
+    async.each(qqueries, function(qquery,callback){
+      var modvalue='gskills.'+qquery.modtype+'.value'
+      var modrating='gskills.'+qquery.modtype+'.rating'
+      Qqdesigner.find().where(modvalue).equals(qquery.quality).where(modrating).in(qquery.rating).sort({ date : 'asc'}).limit(1).exec(function (err, designer) {
+>>>>>>> Stashed changes
         if (designer.length>0){
           var data={};
           if (designer[0].gskills[qquery.modtype].rating > qquery.rating[qquery.rating.length-1]){
